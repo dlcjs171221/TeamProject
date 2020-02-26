@@ -19,8 +19,6 @@
 		where n_idx = #{n_idx}
 	</select>
 
-
-
 <!-- 사용자가 원글의 목록을 만들기 위해 호출하는 기능 -->
 <select id="newslist" parameterType="java.util.Map"
 resultMap="map1">
