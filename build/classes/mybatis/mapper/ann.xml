@@ -8,7 +8,7 @@
 	<id property="a_idx" column="a_idx"/>
 	<collection property="a_list" ofType="mybatis.vo.ACommVO"
 		column="a_idx" select="acommlist"/>
-</resultMap>
+</resultMap>    
  
 
 <!-- 특정 원글들의 기본키를 조건으로 하여
