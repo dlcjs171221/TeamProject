@@ -1,6 +1,6 @@
 package bbs.util;
 
-public class paging {
+public class Paging {
 
 	int nowPage = 1; // 현재 페이지 값 (파라미터 cPage)
 	int numPerPage = 10; //한 페이지 당 보여질 게시물 수
@@ -13,9 +13,9 @@ public class paging {
 	
 	int begin, end, startPage, endPage;
 	
-	public paging() {} //기본생성자
+	public Paging() {} //기본생성자
 	
-	public paging(int numPerPage, int pagePerBlock) {
+	public Paging(int numPerPage, int pagePerBlock) {
 		this.numPerPage = numPerPage;
 		this.pagePerBlock = pagePerBlock;
 	}
