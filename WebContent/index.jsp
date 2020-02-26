@@ -63,91 +63,85 @@
 	
 	<section class="wrapper align-center" id="three">
 		<div class="inner">
-			<article>
-				<div class="table-wrapper">
-					<p class="title">자유게시판</p>
-					<span class="more_view">
-						<a href="control?type=free">more</a>
-					</span>
-					<ul class="free">
-						<li>
-							<a href="">
-								게시물1
-							</a>
-							<span class="date">2016.04.05</span>
-						</li>
-						<li>
-							<a href="">
-								게시물2
-							</a>
-							<span class="date">2016.03.30</span>
-						</li>
-						<li>
-							<a href="">
-							게시물3
-							</a>
-							<span class="date">2016.03.29</span>
-						</li>
-					</ul>
-				</div>
-			</article>
-			<article>
-				<div class="table-wrapper">
-					<p class="title">공지사항</p>
-					<span class="more_view">
-						<a href="control?type=ans">more</a>
-					</span>
-					<ul class="notice">
-						<li>
-							<a href="">
-								게시물1
-							</a>
-							<span class="date">2016.04.05</span>
-						</li>
-						<li>
-							<a href="">
+			<div class="table-wrapper">
+				<p class="title">자유게시판</p>
+				<span class="more_view">
+					<a href="control?type=free">more</a>
+				</span>
+				<ul class="free">
+					<li>
+						<a href="">
+							게시물1
+						</a>
+						<span class="date">2016.04.05</span>
+					</li>
+					<li>
+						<a href="">
 							게시물2
-							</a>
-							<span class="date">2016.03.30</span>
-						</li>
-						<li>
-							<a href="">
-								게시물3
-							</a>
-							<span class="date">2016.03.29</span>
-						</li>
-					</ul>
-				</div>
-			</article>
-			
-			<article>
-				<div class="table-wrapper">
-					<p class="title">뉴스</p>
-					<span class="more_view">
-						<a href="control?type=news">more</a>
-					</span>
-					<ul class="news">
-						<li>
-							<a href="">
-								게시물1
-							</a>
-							<span class="date">2016.04.05</span>
-						</li>
-						<li>
-							<a href="">
-								게시물2
-							</a>
-							<span class="date">2016.03.30</span>
-						</li>
-						<li>
-							<a href="">
-								게시물3
-							</a>
-							<span class="date">2016.03.29</span>
-						</li>
-					</ul>
-				</div>
-			</article>
+						</a>
+						<span class="date">2016.03.30</span>
+					</li>
+					<li>
+						<a href="">
+						게시물3
+						</a>
+						<span class="date">2016.03.29</span>
+					</li>
+				</ul>
+			</div>
+		
+			<div class="table-wrapper">
+				<p class="title">공지사항</p>
+				<span class="more_view">
+					<a href="control?type=ann">more</a>
+				</span>
+				<ul class="notice">
+					<li>
+						<a href="">
+							게시물1
+						</a>
+						<span class="date">2016.04.05</span>
+					</li>
+					<li>
+						<a href="">
+						게시물2
+						</a>
+						<span class="date">2016.03.30</span>
+					</li>
+					<li>
+						<a href="">
+							게시물3
+						</a>
+						<span class="date">2016.03.29</span>
+					</li>
+				</ul>
+			</div>
+			<div class="table-wrapper">
+				<p class="title">뉴스</p>
+				<span class="more_view">
+					<a href="control?type=news">more</a>
+				</span>
+				<ul class="news">
+					<li>
+						<a href="">
+							게시물1
+						</a>
+						<span class="date">2016.04.05</span>
+					</li>
+					<li>
+						<a href="">
+							게시물2
+						</a>
+						<span class="date">2016.03.30</span>
+					</li>
+					<li>
+						<a href="">
+							게시물3
+						</a>
+						<span class="date">2016.03.29</span>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</section>
 	

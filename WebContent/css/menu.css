@@ -5,9 +5,9 @@ body{
 	margin: 0;
 }
 
-a:link{text-decoration:none; color:#555}
-a:visited{text-decoration:none; color:#555}
-a:hover{text-decoration:none; color:#222}
+a:link{text-decoration:none; color:#ffffff}
+a:visited{text-decoration:none; color:#ccc}
+a:hover{text-decoration:none; color:#6cc091}
 
 ul#menu{
 		margin: 0;
@@ -26,7 +26,7 @@ ul#menu{
 		
 	}
 ul#menu>li>a{
-	color: #ffffff;	
+	color: #efefef;	
 }
 	
 	
