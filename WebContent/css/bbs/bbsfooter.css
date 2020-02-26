@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+#footer{
+	padding: 450px 550px 100px;
+	padding-top: -100px; 
+	margin: -300px;
+	}
+
+#footer .footer_area{
+	width: 450px;
+	margin-top: -100px;
+	height: 400px;
+}
+
+#footer .foot_guide li{
+	float: left;
+	padding: 20 20px;
+	border-left: 1px solid #999;
+	text-align: center;
+}
+#footer .foot_guide li:first-child{
+	border-left: none;
+	padding-left: 0;
+}
+#footer .foot_guide li a{
+	color: #777;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+#footer .foot_guide li a:hover{
+	color: #ff5001;
+}
+#footer address{
+	font-size: 12px;
+	color: #777;
+	padding-bottom: 6px;
+}
+#footer .copyright{ font-size: 11px; }
