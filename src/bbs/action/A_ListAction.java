@@ -9,7 +9,7 @@ import mybatis.dao.FreeDAO;
 import mybatis.vo.AnnVO;
 import mybatis.vo.FreeVO;
 
-public class A_ListAction implements Action {
+public class A_ListAction implements Action { //aaaaaaaaaaaaaaaaaaaaaaaaa
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
