@@ -52,7 +52,7 @@
 			<td>
 			<input type="text" id="s_email" name="s_email"/>
 			<label for="email2">@</label>
-			<input type="text" id="email2" name="email"/>
+			<input type="text" id="email2" name="s_email"/>
 			</td>
 		</tr>
 		<tr>
