@@ -8,7 +8,7 @@ public class MainAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		return "/index.jsp";
+		return "/main.jsp";
 	}
 
 }

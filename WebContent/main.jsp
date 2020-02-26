@@ -1,3 +1,5 @@
+<%@page import="mybatis.vo.NewsVO"%>
+<%@page import="mybatis.vo.AnnVO"%>
 <%@page import="mybatis.vo.FreeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,9 +15,6 @@
 <link rel="stylesheet" href="css/fontawesome/all.min.css" />
 </head>
 <body>
-<%
-	FreeVO fvo = null;
-%>
 
 	<!-- header -->
 	<header id="header">
@@ -46,8 +45,25 @@
 	<section>
 		<jsp:include page="menu.jsp"/>
 	</section>
+
+<%
+	FreeVO[] free_ar = null;
+	AnnVO[] ann_ar = null;
+	NewsVO[] news_ar = null;
+
+	Object f_obj = request.getAttribute("free_ar");
+	Object a_obj = request.getAttribute("ann_ar");
+	Object n_obj = request.getAttribute("news_ar");
+	
+	
+	
+	if(f_obj != null) {
+		
+%>
 	
 	<!-- 첫번째 게시물들 -->
+	
+	
 	<section>
 		<div class="inner">
 			<div class="flex ">
@@ -156,7 +172,101 @@
 			</article>
 		</div>
 	</section>
-	
+<%
+	} else{ /////
+%>
+	<section>
+		<div class="inner">
+			<article>
+				<div class="table-wrapper">
+					<p class="title">자유게시판</p>
+					<span class="more_view">
+						<a href="control?type=free">more</a>
+					</span>
+					<ul class="free">
+						<li>
+							<a href="">
+								게시물1
+							</a>
+							<span class="date">2016.04.05</span>
+						</li>
+						<li>
+							<a href="">
+								게시물2
+							</a>
+							<span class="date">2016.03.30</span>
+						</li>
+						<li>
+							<a href="">
+							게시물3
+							</a>
+							<span class="date">2016.03.29</span>
+						</li>
+					</ul>
+				</div>
+			</article>
+			<article>
+				<div class="table-wrapper">
+					<p class="title">공지사항</p>
+					<span class="more_view">
+						<a href="control?type=ann">more</a>
+					</span>
+					<ul class="notice">
+						<li>
+							<a href="">
+								게시물1
+							</a>
+							<span class="date">2016.04.05</span>
+						</li>
+						<li>
+							<a href="">
+							게시물2
+							</a>
+							<span class="date">2016.03.30</span>
+						</li>
+						<li>
+							<a href="">
+								게시물3
+							</a>
+							<span class="date">2016.03.29</span>
+						</li>
+					</ul>
+				</div>
+			</article>
+			
+			<article>
+				<div class="table-wrapper">
+					<p class="title">뉴스</p>
+					<span class="more_view">
+						<a href="control?type=news">more</a>
+					</span>
+					<ul class="news">
+						<li>
+							<a href="">
+								게시물1
+							</a>
+							<span class="date">2016.04.05</span>
+						</li>
+						<li>
+							<a href="">
+								게시물2
+							</a>
+							<span class="date">2016.03.30</span>
+						</li>
+						<li>
+							<a href="">
+								게시물3
+							</a>
+							<span class="date">2016.03.29</span>
+						</li>
+					</ul>
+				</div>
+			</article>
+		</div>
+	</section>
+<%
+	}
+%>	
 	
 	<!-- Scripts -->
 	<script src="js/jquery.min.js"></script>
