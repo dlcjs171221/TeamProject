@@ -78,6 +78,7 @@
 		line-height: 0;
 	}
 </style>
+<link rel="stylesheet" href="css/summernote-lite.css"/>
 </head>
 <body>
 <form action="control" method="post">
@@ -120,7 +121,7 @@
 				<tr>
 				<tr>
 					<th>내용:</th>
-					<td colspan="3"><textarea rows="8" cols="50"></textarea> </td>
+					<td colspan="3"><textarea rows="8" cols="50" id="content" name="content"></textarea> </td>
 				</tr>
 			</tbody>
 			<tfoot>
@@ -158,15 +159,30 @@
 			</div>
 		</div>	
 		<aside id="as2"></aside>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
-	<script type="text/javascript" src="WebContent/js/jquery-3.4.1.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript">
+	
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/summernote-lite.js"></script>
+	<script src="js/lang/summernote-ko-KR.min.js"></script>	
+	<script>
 		$(function(){
 			$("#del").bind("click", function(){
 				$("#del_win").dialog();
 			});
+			$("#content").summernote({
+				height: 300,
+				width: 450,
+				lang: "ko-KR",
+				callbacks:{
+					onImageUpload: function(files, editor){
+						
+						for(var i=0; i<files.length; i++){
+							sendFile(files[i], editor);
+						}
+					},
+				}
+			});
+			
+			$("#content").summernote("lineHeight", 1.0);
 		})
 	</script>
 </body>

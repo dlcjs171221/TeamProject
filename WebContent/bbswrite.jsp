@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 <link rel="stylesheet" href="css/sb-admin-2.min.css"/>
 <link rel="stylesheet" href="css/fontawesome/all.min.css"/>
@@ -51,8 +50,7 @@
 	#table1{
 		width: 600px;
 		border-bottom: 1px solid white;
-		margin-top: -15px;
-		height: 200px;
+		margin-top: -10px;
 	}
 	
 	#m_list a:hover {
@@ -61,7 +59,7 @@
 	}
 	#tab{
 		border: 1px solid black;
-	 	height: 500px;
+	 	height: 660px;
 	 	width: 600px;
 	 	margin-top: -10px;
 	 	margin-left: 250px;
@@ -81,10 +79,11 @@
 		float: right;
 		background: #ccc;
 		height: 900px;
-		margin-top: -915px;
+		margin-top: -1050px;
 		line-height: 0;
 	}
 </style>
+<link rel="stylesheet" href="css/summernote-lite.css"/>
 </head>
 <body>
 	
@@ -125,14 +124,17 @@
 					<td><textarea rows="8" cols="50" name="content" id="content"></textarea> </td>
 				</tr>
 				
-				<tr>
+				</tbody>
+				<tfoot>
+				<tr></tr>
+					<tr>
 					<td colspan="3">
 						<button type="button" id="send" class="btn btn-warning">보내기</button>
 						<input type="reset"  id="reset" class="btn btn-info" value="다시"/>
 						<button type="button" id="list" onclick="javascript:location.href='bbslist.jsp'" class="btn btn-primary">목록</button>
 					</td>
-				</tr>
-				</tbody>
+					</tr>
+				</tfoot>
 			</table>
 		</form>
 	
@@ -151,13 +153,29 @@
 			</div>
 		</div>	
 		<aside id="as2"></aside>
+		
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/summernote-lite.js"></script>
 	<script src="js/lang/summernote-ko-KR.min.js"></script>	
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<script type="text/javascript">
-	
+	<script>
+	$(function(){
+		
+		$("#content").summernote({
+			height: 300,
+			width: 450,
+			lang: "ko-KR",
+			callbacks:{
+				onImageUpload: function(files, editor){
+					
+					for(var i=0; i<files.length; i++){
+						sendFile(files[i], editor);
+					}
+				},
+			}
+		});
+		
+		$("#content").summernote("lineHeight", 1.0);
+	});
 	</script>
 	
 </body>
