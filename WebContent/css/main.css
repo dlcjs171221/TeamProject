@@ -9,6 +9,7 @@
 */
 <<<<<<< HEAD
 
+
 /* Reset */
 
 	
@@ -30,6 +31,7 @@
 
 	body {
 		-webkit-text-size-adjust: none;
+		
 	}
 
 /* Box Model */
@@ -2898,11 +2900,11 @@
 
 /* Banner */
 
-	#banner {
-		padding: 8em 0 9em 0;
-		background-image: url(../../images/banner.jpg);
-		background-size: cover;
-=======
+#banner {
+	padding: 8em 0 9em 0;
+	background-image: url(../../images/banner.jpg);
+	background-size: cover;
+}
 .table-wrapper{
 	position: relative;
 	width: 250px;
