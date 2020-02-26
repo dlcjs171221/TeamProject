@@ -114,11 +114,11 @@
 			
 			<tr>
 				<td><label id="in_id">ID:</label> </td>
-				<td><input type="text" id="in_id" name="in_id" size="15"/> </td>
+				<td><input type="text" id="in_id" name="in_id" size="15" placeholder="아이디를 입력하세요"/> </td>
 			</tr>
 			<tr>
 				<td><label id="m_pw">PW:</label> </td>
-				<td><input type="password" id="in_id" name="in_id" size="15"/> </td>
+				<td><input type="password" id="in_pw" name="in_pw" size="15" placeholder="비밀번호를 입력하세요"/> </td>
 			</tr>
 			
 			<tr>
@@ -132,11 +132,11 @@
 		<table>
 			<tr>
 				<td><label id="bs_id">ID:</label> </td>
-				<td><input type="text" id="bs_id" name="bs_id" size="15"/> </td>
+				<td><input type="text" id="bs_id" name="bs_id" size="15" placeholder="아이디를 입력하세요"/> </td>
 			</tr>
 			<tr>
 				<td><label id="bs_pw">PW:</label> </td>
-				<td><input type="password" id="bs_pw" name="bs_pw" size="15"/> </td>
+				<td><input type="password" id="bs_pw" name="bs_pw" size="15" placeholder="비밀번호를 입력하세요"/> </td>
 			</tr>
 			
 			<tr>

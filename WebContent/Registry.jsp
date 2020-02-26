@@ -36,17 +36,17 @@
 		<table>
 		<tr>
 			<th><label for="s_id">ID:</label></th>
-			<td><input type="text" id="s_id" name="s_id"/><div id="box"></div></td>
+			<td><input type="text" id="s_id" name="s_id" placeholder="아이디를 입력하세요"/><div id="box"></div></td>
 			
 		</tr>
 		
 		<tr>
 			<th><label for="s_pw">PW:</label></th>
-			<td><input type="password" id="s_pw" name="s_pw"/><span>영문/숫자 조합 6~15자</span></td>
+			<td><input type="password" id="s_pw" name="s_pw" placeholder="영문/숫자 조합 6~15자"/></td>
 		</tr>
 		<tr>
 			<th><label for="s_name">Name:</label></th>
-			<td><input type="text" id="s_name" name="s_name"/></td>
+			<td><input type="text" id="s_name" name="s_name" placeholder="아이디를 입력하세요"/></td>
 		</tr>
 		<tr>
 			<th><label for="s_email">Email:</label></th>
