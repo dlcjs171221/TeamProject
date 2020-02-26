@@ -17,7 +17,7 @@
 		<div class="inner">
 			<a class="logo" href="control"><strong>LOGO</strong></a>
 			<a href="control?type=login">sign in</a>
-			<a href="control?type=resistry">Resistry</a>
+			<a href="control?type=reg">Registry</a>
 			<button type="button" id="search_btn" class="button small">Search</button>
 		</div>
 		
@@ -95,7 +95,7 @@
 				<div class="table-wrapper">
 					<p class="title">공지사항</p>
 					<span class="more_view">
-						<a href="control?type=ans">more</a>
+						<a href="control?type=ann">more</a>
 					</span>
 					<ul class="notice">
 						<li>
