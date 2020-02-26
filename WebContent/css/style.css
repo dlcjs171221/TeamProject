@@ -1,0 +1,113 @@
+@charset "UTF-8";
+	body{
+		background-color: #191919;
+		color: #fff;
+		margin: 0px;
+		padding: 0px;
+	}
+	div#menu_header{
+		height: 44px;
+		margin: 0;
+		color: #fff;
+		background-color: #dfe2db;
+	}
+	#menu{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font: 15px sans-serif;
+		line-height: 44px;
+		text-align: center;
+	}	
+	
+	div#wrap a{
+		color: #fff;
+	}
+	div#wrap{
+		width: 700px;
+		border: 1px solid #fff;
+		margin: 50px auto;
+	}
+	div#wrap>h1{
+		margin: 10px;
+		font: bold 35px sans-serif;
+	}
+	ul#carList{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	li.carBox{
+		float: left;
+		width: 170px;
+		border: 1px solid #fff;
+		text-align: center;
+		margin: 0 0 46px 46px; /* 위 오른 아래 왼 */
+		padding-bottom: 10px;
+	}
+	li.end{
+		float: none;
+		clear: both; /*float 해제*/
+	}
+	li.carBox>span>a{
+		font: 12px sans-serif;
+		text-decoration: none;
+	}
+	li.carBox>a{
+		display: block;
+		width: 160px;
+		height: 120px;
+		border: 5px solid #232323;
+	}
+	li.carBox>a:hover {
+		border: 5px solid #f00;
+	}
+
+/* 메뉴 */	
+#menu{
+	font-size: 30px;
+	color: #fff056;
+}	
+.line{
+	border:1px solid fff;
+}
+.txt_c{text-align: center}
+a:link{text-decoration:none; color:#fff}
+a:visited{text-decoration:none; color:#dfe2db}
+a:hover{text-decoration:none; color:#fff056}
+
+/* 로그인 박스 */
+.login-box-table1{
+	border: 1px solid #fff056;
+	padding: 10px;
+}
+.login-box-table2{
+	border: 1px solid #fff056;
+	padding: 10px;
+}
+
+
+/* 로그인 전체 div */
+.inner{
+	text-align: center;
+	position: absolute;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

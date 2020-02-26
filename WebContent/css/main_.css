@@ -1,0 +1,19 @@
+@charset "UTF-8";
+body{
+		background-color: #191919;
+		color: #fff;
+		margin: 0px;
+		padding: 0px;
+	}
+.line{
+	border:1px solid fff;
+}
+#high{
+	float: right;
+	padding-right: 10px;
+}
+.right_div{
+	text-decoration: none;
+	color: #fff056;
+}
+
