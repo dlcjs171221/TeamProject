@@ -2,10 +2,62 @@
 
 body{
 		background-color: #191919;
-		color: #fff;
-		margin: 0px;
-		padding: 0px;
+		color: #efefef;
+		margin: 0;
+		padding: 0;
+		width:100%; 
+		height: 100%;
 	}
-.login_t{
 	
-}	
+#header {
+			color: #ffffff;
+			display: inline-block;
+			font-weight: 400;
+			height: inherit;
+			left: 0;
+			line-height: inherit;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			font-size: 1em;
+			background: rgba(75, 75, 93, .85);
+		}	
+	
+div.contents{
+	border: 1px solid rgb(75, 75, 93);
+	width: 780px;
+	height: auto;
+	padding: 20px;
+	margin: auto;
+	margin-top: 10%;
+}
+.login-title{
+	font-family: inherit;
+	font-size: 2.5em;
+	text-align: center;
+}
+.login-box{
+	width: 650px;
+	height: 300px;
+	margin: auto;
+}
+
+/* 일반회원 */
+.person_login{
+	float: left;
+	width: 300px;
+	margin: 0;
+	padding: 10px;
+}
+
+/* 기업회원 */
+.group_login{
+	float: right;
+	width: 300px;
+	margin: 0;
+	padding: 10px;
+}
+#login_per, #login_gro{
+	width: 20%
+}
