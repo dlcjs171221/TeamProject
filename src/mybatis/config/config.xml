@@ -12,8 +12,9 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="mybatis/mapper/free.xml"/>
+    <mapper resource="mybatis/mapper/free.xml"/>  
     <mapper resource="mybatis/mapper/ann.xml"/>
     <mapper resource="mybatis/mapper/news.xml"/>
+    <mapper resource="mybatis/mapper/mem.xml"/>
   </mappers>
 </configuration>
