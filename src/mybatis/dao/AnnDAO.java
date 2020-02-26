@@ -17,11 +17,10 @@ public class AnnDAO {
 	public static int getTotalCount() {
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.selectOne("ann.totalCount");
-		
+		int cnt = ss.selectOne("ann.totalCount");		
 		ss.close();
 		
-		return cnt;
+		return cnt; 
 	}
 	
 	//원하는 페이지의 게시물들을 목록화면으로
