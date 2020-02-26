@@ -3,7 +3,7 @@ package bbs.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bbs.util.paging;
+import bbs.util.Paging;
 import mybatis.dao.AnnDAO;
 import mybatis.dao.FreeDAO;
 import mybatis.vo.AnnVO;
@@ -14,7 +14,7 @@ public class A_ListAction implements Action { //aaaaaaaaaaaaaaaaaaaaaa
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// 페이징 처리를 위한 작업
-				paging page = new paging();
+				Paging page = new Paging();
 				
 				// 전체 페이지 수를 구하기 위해 먼저
 				// 총 게시물의 수를 구해서 전체페이지 값을 지정한다.
