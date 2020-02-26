@@ -72,6 +72,22 @@
 		color: blue;
 		text-decoration: none;
 	}
+	#as{
+		width: 200px;
+		float: left;
+		background: #ccc;
+		height: 900px;
+		margin-top: -150px;
+		line-height: 0;
+	}
+	#as2{
+		width: 200px;
+		float: right;
+		background: #ccc;
+		height: 900px;
+		margin-top: -660px;
+		line-height: 0;
+	}
 </style>
 </head>
 <body>
@@ -89,6 +105,7 @@
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
 		</ul>
 	</div>
+	<aside id="as"></aside>
 	<div class="c_contents">
 		<form action="" method="post">
 		<table>
@@ -136,6 +153,7 @@
 			<button type="button" id="d_close" name="d_close" class="btn btn-warning">닫기</button><br/><br/>
 		</form>
 	</div>
+	<aside id="as2"></aside>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
 	<script src="js/jquery-3.4.1.min.js"></script>

@@ -68,9 +68,26 @@
 	 	padding-top: 70px;
 	 	padding-left: 35px;
 	}
+	#as{
+		width: 200px;
+		float: left;
+		background: #ccc;
+		height: 900px;
+		margin-top: -150px;
+		line-height: 0;
+	}
+	#as2{
+		width: 200px;
+		float: right;
+		background: #ccc;
+		height: 900px;
+		margin-top: -915px;
+		line-height: 0;
+	}
 </style>
 </head>
 <body>
+	
 	<div id="header">
 	<form action="control" method="post">
 		<h1><a href=""><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
@@ -86,6 +103,7 @@
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
 		</ul>
 	</div>
+	<aside id="as"></aside>
 	<div id="tab">
 		<form action="" method="post">
 			<table id="table1">
@@ -132,6 +150,7 @@
 				</p>
 			</div>
 		</div>	
+		<aside id="as2"></aside>
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/summernote-lite.js"></script>
 	<script src="js/lang/summernote-ko-KR.min.js"></script>	
