@@ -53,11 +53,11 @@ public class MemDAO {
 		}
 		
 		//로그인
-		public static MemVO login(String u_id, String u_pw) { //변수명을 한꺼번에 변경하고 싶을때 변경하고 싶은 변수명에 커서를 두고 마우스 오른쪽 클릭 refator->rename
+		public static MemVO login(String m_id, String m_pw) { //변수명을 한꺼번에 변경하고 싶을때 변경하고 싶은 변수명에 커서를 두고 마우스 오른쪽 클릭 refator->rename
 			//맵퍼에 전달한 인자가 2개 이므로 Map으로 정의하자!
 			Map<String, String> map = new HashMap<String, String>();
-			map.put("id", u_id);
-			map.put("pw", u_pw);
+			map.put("id", m_id);
+			map.put("pw", m_pw);
 			
 			SqlSession ss = FactoryService.getFactory().openSession();
 			MemVO vo = ss.selectOne("mem.login", map);
