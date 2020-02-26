@@ -69,10 +69,10 @@
 				<label for="s_phone3">-</label>
 				<input type="text" id="s_phone3" name="s_phone" size="10"/>
 			</td>
-		</tr>
+		</tr>     
 		</table><br/><br/><br/>
-		<button type="button" id="registry" onclick="type=" class="btn btn-info">Registry</button>&nbsp;&nbsp;
-		<button type="button" id="cancle" onclick="javascript:location.href='bbslogin.jsp'" class="btn btn-success">Cancle</button>
+		<button type="button" id="registry" onclick="" class="btn btn-info">Registry</button>&nbsp;&nbsp;
+		<button type="button" id="cancle" onclick="javascript:location.href='control?type='" class="btn btn-success">Cancle</button>
 		</form>
 	</div>
 	</div>
