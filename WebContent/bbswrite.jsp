@@ -88,9 +88,7 @@
 <body>
 	
 	<div id="header">
-	<form action="control" method="post">
-		<h1><a href=""><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
-		</form>
+		<h1><a href="control?type=maintype=main"><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
 	</div>
 	
 	<div  id="menu">

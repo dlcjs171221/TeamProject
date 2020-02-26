@@ -91,11 +91,9 @@
 </style>
 </head>
 <body>
-<form action="control" method="post">
 <div id="header">
-		<h1><a href=""><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
+		<h1><a href="control?type=main"><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
 	</div>
-	</form>
 	<div  id="menu">
 		<ul id="m_list" class="form-control">
 		<li><i class="fab fa-bag"></i> <a href="product_list.jsp?category=com001">컴퓨터</a> </li>       
