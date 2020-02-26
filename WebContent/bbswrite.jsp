@@ -102,7 +102,7 @@
 	</div>
 	<aside id="as"></aside>
 	<div id="tab">
-		<form action="" method="post">
+		<form action="" method="post" enctype="multipart/form-data">
 			<table id="table1">
 				<tbody>
 					<tr>

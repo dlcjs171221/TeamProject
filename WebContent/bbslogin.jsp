@@ -91,6 +91,7 @@
 		margin-top: -150px;
 		line-height: 0;
 	}
+	
 	#as2{
 		width: 200px;
 		float: right;
@@ -102,9 +103,11 @@
 </style>
 </head>
 <body>
+<form action="control" method="post">
 	<div id="header">
-		<h1><a href="control?type=main"><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
+		<h1><a href="type=main"><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
 	</div>
+	</form>
 	<div  id="menu">
 		<ul id="m_list" class="form-control">
 			<li><a href="#">베스트</a></li>
@@ -131,7 +134,7 @@
 				<td><input type="text" id="in_id" name="in_id" size="15" placeholder="아이디를 입력하세요"/> </td>
 			</tr>
 			<tr>
-				<td><label id="m_pw">PW:</label> </td>
+				<td><label id="in_pw">PW:</label> </td>
 				<td><input type="password" id="in_pw" name="in_pw" size="15" placeholder="비밀번호를 입력하세요"/> </td>
 			</tr>
 			

@@ -95,7 +95,7 @@
 	</div>
 	<aside id="as"></aside>
 	<div class="c_contents">
-		<form action="" method="post">
+		<form action="" method="post" enctype="multipart/form-data">
 		<table>
 		<colgroup>
 			<col width="100px"/>
@@ -107,16 +107,15 @@
 				<tr>
 					<th>Title:</th>
 					<td><input type="text" size="40"/> </td>
-					<th>date</th>
-					<td><input type="text" size="7"/></td>
 				</tr>
 				<tr>
 					<th>writer:</th>
 					<td><input type="text" size="40"/></td>
-					<th>hit:</th>
-					<td><input type="text" size="7"/></td>
 				</tr>
 				<tr>
+						<th>첨부파일:</th>
+						<td><input type="file" id="file" name="file" value=""/> </td>
+				</tr>
 				<tr>
 					<th>내용:</th>
 					<td colspan="3"><textarea rows="8" cols="50" id="content" name="content"></textarea> </td>
@@ -127,7 +126,7 @@
 					<td colspan="2">
 						<input type="button" value="보내기" onclick="sendData()" class="btn btn-warning"/>
 						<input type="reset" id="reset" value="다시" class="btn btn-info"/>
-						<input type="button" id="list" value="목록" class="btn btn-primary"/>
+						<input type="button" id="list" value="목록" onclick="javascript:location.href='control?type='" class="btn btn-primary"/>
 					</td>
 				</tr>
 			</tfoot>

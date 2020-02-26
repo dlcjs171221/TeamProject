@@ -85,8 +85,17 @@
 		float: right;
 		background: #ccc;
 		height: 900px;
-		margin-top: -660px;
+		margin-top: -1010px;
 		line-height: 0;
+	}
+	#comm{
+		width: 600px;
+		margin-left: 250px;
+	}
+	#comm_body{
+		margin-left: 250px;
+		width: 1000px;
+		padding-left: 100px;
 	}
 </style>
 </head>
@@ -143,6 +152,30 @@
 		</table>
 		</form>
 	</div>
+	<div id="comm">
+		<table>
+		<thead>
+			<tr>
+				<th> <h2>댓글</h2> </th>
+			</tr>
+		</thead>
+		
+			<tbody id="comm_body">
+				<tr>
+					<th><h3> <label for="title">제목:</label></h3> </th>
+					<td><input type="text" id="title" name="title" size="20"/> </td>
+				</tr>
+				<tr>
+					<th><h3><label for="writer">작성자:</label> </h3></th>
+					<td><input type="text" id="writer" name="writer"size="20"> </td>
+				</tr>
+				<tr>
+					<td><button type="button" id="comm_ok" name="comm_ok" class="btn btn-info">작성</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr/><hr/>
 	<div id="del_win">
 		<form>
 			<label for="password">비밀번호:</label>
