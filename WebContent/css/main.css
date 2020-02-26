@@ -7,7 +7,11 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
-<<<<<<< HEAD
+
+#search_btn{
+	float: right;
+}
+
 
 
 /* Reset */
@@ -1767,6 +1771,26 @@
 		}
 
 /* Section/Article */
+.title{
+	background: rgb(75, 75, 93, 0.83);
+	color: #efefef;
+	padding: 5px;
+	margin-left: 0;
+	padding-left: 0;
+}
+.more_view{
+	margin-right: 5px;
+	padding: 0;
+	float: right;
+	color: #dedede;
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+}
+.date{
+	font-size: 12px;
+	margin: 0;
+}
 
 	section.special, article.special {
 		text-align: center;
@@ -2432,6 +2456,7 @@
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
+		padding: 0;
 	}
 
 	table {
@@ -2905,14 +2930,7 @@
 	background-image: url(../../images/banner.jpg);
 	background-size: cover;
 }
-.table-wrapper{
-	position: relative;
-	width: 250px;
-	overflow: hidden;
-	float: left;
-	margin-left: 50px;
-	border: 1px solid #000;
-}
+
 .free{
 	list-style: none;
 }
@@ -5378,10 +5396,17 @@
 
 /* Table */
 
-	.table-wrapper {
-		-webkit-overflow-scrolling: touch;
-		overflow-x: auto;
-	}
+.table-wrapper {
+	-webkit-overflow-scrolling: touch;
+	overflow-x: auto;
+	position: relative;
+	width: 250px;
+	overflow: hidden;
+	float: left;
+	margin-left: 50px;
+	border: 1px solid #000;
+}
+	
 
 	table {
 		margin: 0 0 2em 0;

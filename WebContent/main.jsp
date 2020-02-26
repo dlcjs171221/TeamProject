@@ -1,3 +1,4 @@
+<%@page import="mybatis.vo.FreeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,10 +9,14 @@
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link rel="stylesheet" href="css/jquery-ui.min.css"/>
- <link rel="stylesheet" href="css/sb-admin-2.min.css" />
-    <link rel="stylesheet" href="css/fontawesome/all.min.css" />
+<link rel="stylesheet" href="css/sb-admin-2.min.css" />
+<link rel="stylesheet" href="css/fontawesome/all.min.css" />
 </head>
 <body>
+<%
+	FreeVO fvo = null;
+%>
+
 	<!-- header -->
 	<header id="header">
 		<div class="inner">
@@ -23,7 +28,6 @@
 		
 		<div id="dialog">
 			<form action="">
-			<i class="ui-button-icon ui-icon ui-icon-closethick"></i>
 				<input type="text" id="search_bar" value="" placeholder="검색어를 입력하세요">
 				<button type="button" id="search_btn" class="button small">
 					<i class="fas fa-search"></i> Search
@@ -38,10 +42,12 @@
 		<img alt="배너사진" src="img/banner.jpg">
 	</section>
 	
+	<!-- 메뉴 -->
 	<section>
 		<jsp:include page="menu.jsp"/>
 	</section>
 	
+	<!-- 첫번째 게시물들 -->
 	<section>
 		<div class="inner">
 			<div class="flex ">
