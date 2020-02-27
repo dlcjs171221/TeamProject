@@ -1,3 +1,4 @@
+<%@page import="mybatis.vo.WbsVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -27,7 +28,7 @@
 			<c:if test="${obj != null }">
 				<c:set var="vo" value="${obj }" />
 				<span>${vo.m_name }(${vo.m_id })님 환영합니다!</span>
-				<a href="control?type=myInfo">내정보</a>
+				<a href="control?type=m_id">내정보</a>
 				<a href="control?type=logout">sign out</a>
 			</c:if>
 			
@@ -89,18 +90,32 @@
 					</span>
 				<c:choose>
 					<c:when test="${requestScope.f_ar != null}">
-					<c:set var="f_ar" value="${requestScope.f_ar }" />
 						<ul class="free">
-						<c:set var="i" value="${pageScope.totalPage }" />
-						<c:forEach var="item" items="${f_ar }"  
-								begin="0" end="2" varStatus="status">
+					<%
+						WbsVO[] ar = null;
+						Object ar_obj = request.getAttribute("ar");
+						
+						if(ar_obj != null) {
+							ar = (WbsVO[]) ar_obj;
+							
+							for(WbsVO vo : ar) {
+					%>			
 							<li>
-								<a href="">
-									${f_ar.subject }
+								<a href="control?type=free&b_idx=<%=vo.getB_idx() %>">
+									<%=vo.getSubject() %>
+									<%
+										if(vo.getC_list().size() > 0){
+									%>		(<%=vo.getC_list().size() %>)
+									<%		
+										}
+									%>
 								</a>
-								<span class="date">${f_ar.write_date }</span>
+								<span class="date"></span>
 							</li>
-						</c:forEach>	
+					<%
+							}
+						}
+					%>		
 						</ul>
 					</c:when>	
 					
@@ -122,12 +137,10 @@
 					</span>
 				<c:choose>
 					<c:when test="${requestScope.a_ar != null}">
-					<c:set var="a_ar" value="${requestScope.a_ar }" />
-					<c:set var=""></c:set>
 						<ul class="free">
 							<li>
 								<a href="">
-									${a_ar}
+							
 								</a>
 								<span class="date">2016.04.05</span>
 							</li>
