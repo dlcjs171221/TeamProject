@@ -114,3 +114,14 @@
 		color: black;
 	}
 	
+	.f_contents{
+		border: 1px solid black;
+		padding: 55px;
+		margin: 50px;
+		margin-left: 250px;
+		margin-top: -10px;
+		width: 600px;
+		height: 500px;
+	}
+	
+	
