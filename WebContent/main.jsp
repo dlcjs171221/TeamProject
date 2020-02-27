@@ -19,13 +19,19 @@
 		<div class="inner">
 			<a class="logo" href="control"><strong>LOGO</strong></a>
 			
+			<c:set var="obj"  value="${sessionScope.vo }"/>
+			<c:if test="${obj == null }">
+				<a href="control?type=login">sign in</a>
+				<a href="control?type=reg">Registry</a>
+			</c:if>
+			<c:if test="${obj != null }">
+				<c:set var="vo" value="${obj }" />
+				<h4>${vo.m_name }님 환영합니다!</h4>
+				<a href="control?type=logout">sign out</a>
+			</c:if>
 			
 			
 			
-			<a href="control?type=login">sign in</a>
-			<a href="control?type=logout">sign out</a>
-			
-			<a href="control?type=reg">Registry</a>
 			<button type="button" id="search_btn" class="button small">Search</button>
 		</div>
 		
