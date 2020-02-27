@@ -1,3 +1,4 @@
+<%@page import="mybatis.vo.WbsVO"%>
 <%@page import="wbs.util.Paging"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -50,6 +51,19 @@
 			</tr>
 			</thead>
 			<tbody>
+<%
+	//게시물들 begin과 end에 맞도록 가져온다.
+	WbsVO[] ar = null;
+	Object ar_obj = request.getAttribute("f_list");
+	
+	if(ar_obj != null) {
+%>
+
+	
+<%	
+	}
+%>			
+			
 				<tr>
 					<td>1</td>
 					<td><a href="">2</a></td>
