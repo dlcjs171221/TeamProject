@@ -1,3 +1,4 @@
+<%@page import="wbs.util.Paging"%>
 <%@page import="mybatis.vo.WbsVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -28,7 +29,7 @@
 			<c:if test="${obj != null }">
 				<c:set var="vo" value="${obj }" />
 				<span>${vo.m_name }(${vo.m_id })님 환영합니다!</span>
-				<a href="control?type=m_id">내정보</a>
+				<a href="control?type=mem">내정보</a>
 				<a href="control?type=logout">sign out</a>
 			</c:if>
 			
@@ -91,7 +92,12 @@
 				<c:choose>
 					<c:when test="${requestScope.f_ar != null}">
 						<ul class="free">
-					<%
+					 <%
+					Object obj = request.getAttribute("page");
+					Paging pvo = null;
+							
+					
+					
 						WbsVO[] ar = null;
 						Object ar_obj = request.getAttribute("ar");
 						
@@ -99,9 +105,10 @@
 							ar = (WbsVO[]) ar_obj;
 							
 							for(WbsVO vo : ar) {
-					%>			
+					%>	
+						<li>*^^*</li>
 							<li>
-								<a href="control?type=free&b_idx=<%=vo.getB_idx() %>">
+								<a href="control?type=free&b_idx=<%=vo.getB_idx() %>&cPage=<%=pvo.getNowPage() %>">
 									<%=vo.getSubject() %>
 									<%
 										if(vo.getC_list().size() > 0){
@@ -109,13 +116,14 @@
 									<%		
 										}
 									%>
+									
 								</a>
-								<span class="date"></span>
+								<span class="date"><%=vo.getWrite_date() %></span>
 							</li>
 					<%
 							}
 						}
-					%>		
+					%>	
 						</ul>
 					</c:when>	
 					
@@ -140,13 +148,13 @@
 						<ul class="free">
 							<li>
 								<a href="">
-							
+									글글글${requestScope["a_ar"] }
 								</a>
 								<span class="date">2016.04.05</span>
 							</li>
 							<li>
 								<a href="">
-									게시물2
+									<c:out value="${vo.m_id }"></c:out>
 								</a>
 								<span class="date">2016.03.30</span>
 							</li>
@@ -175,37 +183,45 @@
 					<span class="more_view">
 						<a href="control?type=news">more</a>
 					</span>
-				<c:choose>	
+				<%-- <c:choose>	
 					<c:when test="${requestScope.n_ar != null}">
-					<c:set var="n_ar" value="${requestScope.n_ar }" />
+					 --%><c:set var="n_ar" value="${requestScope.n_ar }" />
 						<ul class="free">
+						<%
+					Object obj = request.getAttribute("page");
+					Paging pvo = null;
+							
+					
+					
+						WbsVO[] ar = null;
+						Object ar_obj = request.getAttribute("ar");
+						
+						if(ar_obj != null) {
+							ar = (WbsVO[]) ar_obj;
+							
+							for(WbsVO vo : ar) {
+					%>
 							<li>
 								<a href="">
-									
+									<%=vo.getSubject() %>
 								</a>
-								<span class="date">2016.04.05</span>
+								<span class="date"><%=vo.getWrite_date() %></span>
 							</li>
-							<li>
-								<a href="">
-									게시물2
-								</a>
-								<span class="date">2016.03.30</span>
-							</li>
-							<li>
-								<a href="">
-								게시물3
-								</a>
-								<span class="date">2016.03.29</span>
-							</li>
+						<%
+							}
+						}
+					%>
+						
+						
 						</ul>
-					</c:when>
+					<%-- </c:when>
 					
 					<c:when test="${requestScope.a_ar == null}">
 						<div class="inner">
 							<p class="null"> 등록된 게시물이 없습니다.</p>
 						</div>
-					</c:when>
-				</c:choose>	
+					 </c:when>
+				</c:choose>	 --%>
 				</div>
 			</article>
 		</div>
