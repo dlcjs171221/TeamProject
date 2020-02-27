@@ -50,28 +50,7 @@
 				<th>hit</th>
 			</tr>
 			</thead>
-			<tbody>
-<%
-	//게시물들 begin과 end에 맞도록 가져온다.
-	WbsVO[] ar = null;
-	Object ar_obj = request.getAttribute("f_list");
-	
-	if(ar_obj != null) {
-%>
-
-	
-<%	
-	}
-%>			
 			
-				<tr>
-					<td>1</td>
-					<td><a href="">2</a></td>
-					<td>3</td>
-					<td>4</td>
-					<td>5</td>
-				</tr>
-			</tbody>
 			<tfoot>
                       <tr>
                           <td colspan="5">
@@ -123,6 +102,62 @@
 						 
                       </tr>
                   </tfoot>
+			
+	
+			<tbody>
+<%
+	//게시물들 begin과 end에 맞도록 가져온다.
+	WbsVO[] ar = null;
+	Object ar_obj = request.getAttribute("f_list");
+	
+	if(ar_obj != null) {
+		
+	ar = (WbsVO[]) ar_obj;
+	
+	int i = 0;
+	
+	for(WbsVO vo : ar){
+		int num = pvo.getTotalRecord() - ((pvo.getNowPage()-1)*pvo.getNumPerPage()+i);
+			
+%>
+				<tr>
+					<td><%=num %></td>
+					<td style="text-align: left">
+						<a href="control?type=view&cPage=<%=pvo.getNowPage()%>&b_idx=<%=vo.getB_idx()%>">
+						<%=vo.getSubject() %>
+						<%
+							if(vo.getC_list().size() > 0){
+						%>
+							(<%=vo.getC_list().size() %>) <%--댓글 숫자 --%>
+						<%		
+							}
+						%>
+					</a>
+					</td>
+					<td><%=vo.getWriter() %></td>
+					<td>
+					<%
+						if(vo.getWrite_date() != null)
+							out.println(vo.getWrite_date().substring(0,10));
+					%>
+					</td>
+					<td><%=vo.getHit() %></td>
+				</tr>
+<%
+			++i;
+		}//for의 끝
+	}else{
+%>
+	<tr>
+		<td colspan="5" class="empty">
+			등록된 게시물이 없습니다.
+		</td>
+	</tr>		
+<%
+		}
+%>	
+		</tbody>
+			
 		</table>
 		<a href="" id="write" class="btn btn-primary">글쓰기</a>
 	</div>
