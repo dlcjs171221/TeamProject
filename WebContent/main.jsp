@@ -89,25 +89,17 @@
 					</span>
 				<c:choose>
 					<c:when test="${requestScope.f_ar != null}">
+					<c:set var="f_ar" value="${requestScope.f_ar }" />
 						<ul class="free">
+						<c:forEach var="item" items="${f_ar }"  
+								begin="status" end="3" varStatus="status">
 							<li>
 								<a href="">
-									
+									${f_ar.subject }
 								</a>
-								<span class="date">2016.04.05</span>
+								<span class="date">${f_ar.write_date }</span>
 							</li>
-							<li>
-								<a href="">
-									게시물2
-								</a>
-								<span class="date">2016.03.30</span>
-							</li>
-							<li>
-								<a href="">
-								게시물3
-								</a>
-								<span class="date">2016.03.29</span>
-							</li>
+						</c:forEach>	
 						</ul>
 					</c:when>	
 					
@@ -129,6 +121,7 @@
 					</span>
 				<c:choose>
 					<c:when test="${requestScope.a_ar != null}">
+					<c:set var="a_ar" value="${requestScope.a_ar }" />
 						<ul class="free">
 							<li>
 								<a href="">
@@ -169,6 +162,7 @@
 					</span>
 				<c:choose>	
 					<c:when test="${requestScope.n_ar != null}">
+					<c:set var="n_ar" value="${requestScope.n_ar }" />
 						<ul class="free">
 							<li>
 								<a href="">
