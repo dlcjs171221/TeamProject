@@ -1,6 +1,3 @@
-<%@page import="mybatis.vo.NewsVO"%>
-<%@page import="mybatis.vo.AnnVO"%>
-<%@page import="mybatis.vo.FreeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,7 +44,7 @@
 	</section>
 
 <%
-	FreeVO[] free_ar = null;
+	/* FreeVO[] free_ar = null;
 	AnnVO[] ann_ar = null;
 	NewsVO[] news_ar = null;
 
@@ -58,7 +55,7 @@
 	
 	
 	if(f_obj != null) {
-		
+		 */
 %>
 	
 	<!-- 첫번째 게시물들 -->
@@ -172,10 +169,10 @@
 			</article>
 		</div>
 	</section>
-<%
+<%-- <%
 	} else{ /////
 %>
-	<section>
+	 --%><section>
 		<div class="inner">
 			<article>
 				<div class="table-wrapper">
@@ -264,9 +261,9 @@
 			</article>
 		</div>
 	</section>
-<%
+<%-- <%
 	}
-%>	
+%>	 --%>
 	
 	<!-- Scripts -->
 	<script src="js/jquery.min.js"></script>
