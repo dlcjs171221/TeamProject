@@ -51,8 +51,8 @@
 			<th><label for="s_email">Email:</label></th>
 			<td>
 			<input type="text" id="s_email" name="m_email"/>
-			<label for="email2">@</label>
-			<input type="text" id="email2" name="m_email"/>
+			<label for="s_email2">@</label>
+			<input type="text" id="s_email2" name="m_email"/>
 			</td>
 		</tr>
 		<tr>
@@ -71,7 +71,7 @@
 			</td>
 		</tr>     
 		</table><br/><br/><br/>
-		<button type="submit" id="registry"  class="btn btn-info">Registry</button>&nbsp;&nbsp;
+		<button type="button" id="registry"  class="btn btn-info">Registry</button>&nbsp;&nbsp;
 		<button type="button" id="cancle" onclick="javascript:location.href='control?type='" class="btn btn-success">Cancle</button>
 		</form>
 	</div>
@@ -99,9 +99,12 @@
 				var pw = $("#s_pw").val();
 				var name = $("#s_name").val();
 				var email = $("#s_email").val();
+				var email2 = $("#s_email2").val();
 				var phone = $("#s_phone").val();
+				var phone2 = $("#s_phone2").val();
+				var phone3 = $("#s_phone3").val();
 				
-				param = "type=mem&m_id="+encodeURIComponent(id)+"&m_pw="+encodeURIComponent(pw)+"&m_name="+encodeURIComponent(name)+"&m_email="+encodeURIComponent(email)+"&m_phone="+encodeURIComponent(phone);
+				param = "type=mem&m_id="+encodeURIComponent(id)+"&m_pw="+encodeURIComponent(pw)+"&m_name="+encodeURIComponent(name)+"&m_email="+encodeURIComponent(email)+"&m_email="+encodeURIComponent(email2)+"&m_phone="+encodeURIComponent(phone)+"&m_phone="+encodeURIComponent(phone2)+"&m_phone="+encodeURIComponent(phone3);
 				
 				if(id.trim().length<1){
 					alert("아이디를 입력하세요~");
@@ -126,7 +129,7 @@
 				}).done(function(data){
 					if(data.res == "true"){
 						alert("회원가입완료");
-						location.href="control?type=main";
+						location.href="control?type=login";
 					}
 				}).fail(function(err){
 					console.log("err");

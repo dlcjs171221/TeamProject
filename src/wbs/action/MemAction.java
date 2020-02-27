@@ -29,7 +29,7 @@ public class MemAction implements Action{
 		return "/memok.jsp";
 		}
 		
-		return	null;
+		return	"";
 	}
 
 }
