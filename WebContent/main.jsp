@@ -92,7 +92,7 @@
 					<c:set var="f_ar" value="${requestScope.f_ar }" />
 						<ul class="free">
 						<c:forEach var="item" items="${f_ar }"  
-								begin="status" end="3" varStatus="status">
+								begin="0" end="2" varStatus="status">
 							<li>
 								<a href="">
 									${f_ar.subject }
@@ -125,7 +125,7 @@
 						<ul class="free">
 							<li>
 								<a href="">
-									
+									${a_ar}
 								</a>
 								<span class="date">2016.04.05</span>
 							</li>
