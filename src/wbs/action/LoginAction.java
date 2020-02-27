@@ -30,7 +30,7 @@ public class LoginAction implements Action {
 			
 			MemVO vo = MemDAO.login(m_id, m_pw);
 			
-			HttpSession session = null;
+			HttpSession session = request.getSession();
 			if(vo != null) // 회원정보가 있으면
 				session.setAttribute("vo", vo);
 			

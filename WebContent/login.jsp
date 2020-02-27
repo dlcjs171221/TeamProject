@@ -46,7 +46,7 @@
 					         	<div class="row">
 					            	<button class="btn btn-f btn-point login-top" id="login_btn" type="button" >Login</button>
 					            	<button class="btn btn-f btn-point login-top" id="reg_btn" type="button"
-					            		onclick="javascript:control?type=reg" >Registry</button>
+					            		onclick="reg()" >Registry</button>
 					            </div>
 							</td>
 						</tr>
@@ -91,6 +91,10 @@
 		
 	});
 	
+	
+	function reg(){
+		location.href="control?type=reg";
+	}
 	
 	</script>
 	

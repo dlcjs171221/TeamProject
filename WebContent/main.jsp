@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,13 @@
 	<header id="header">
 		<div class="inner">
 			<a class="logo" href="control"><strong>LOGO</strong></a>
+			
+			
+			
+			
 			<a href="control?type=login">sign in</a>
+			<a href="control?type=logout">sign out</a>
+			
 			<a href="control?type=reg">Registry</a>
 			<button type="button" id="search_btn" class="button small">Search</button>
 		</div>
