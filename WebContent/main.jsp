@@ -88,7 +88,7 @@
 						<a href="control?type=free">more</a>
 					</span>
 				<c:choose>
-					<c:when test="${param.f_ar != null}">
+					<c:when test="${requestScope.f_ar != null}">
 						<ul class="free">
 							<li>
 								<a href="">
@@ -111,7 +111,7 @@
 						</ul>
 					</c:when>	
 					
-					<c:when test="${param.f_ar == null}"> 
+					<c:when test="${requestScope.f_ar == null}"> 
 						<div class="inner">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
@@ -128,7 +128,7 @@
 						<a href="control?type=ann">more</a>
 					</span>
 				<c:choose>
-					<c:when test="${param.a_ar != null}">
+					<c:when test="${requestScope.a_ar != null}">
 						<ul class="free">
 							<li>
 								<a href="">
@@ -151,7 +151,7 @@
 						</ul>
 					</c:when>
 					
-					<c:when test="${param.a_ar == null}"> 
+					<c:when test="${requestScope.a_ar == null}"> 
 						<div class="inner">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
@@ -168,7 +168,7 @@
 						<a href="control?type=news">more</a>
 					</span>
 				<c:choose>	
-					<c:when test="${param.n_ar != null}">
+					<c:when test="${requestScope.n_ar != null}">
 						<ul class="free">
 							<li>
 								<a href="">
@@ -191,7 +191,7 @@
 						</ul>
 					</c:when>
 					
-					<c:when test="${param.a_ar == null}">
+					<c:when test="${requestScope.a_ar == null}">
 						<div class="inner">
 							<p class="null"> 등록된 게시물이 없습니다.</p>
 						</div>
