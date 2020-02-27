@@ -123,7 +123,7 @@
 				<tr>
 					<td><%=num %></td>
 					<td style="text-align: left">
-						<a href="control?type=view&cPage=<%=pvo.getNowPage()%>&b_idx=<%=vo.getB_idx()%>">
+						<a href="control?type=fview&cPage=<%=pvo.getNowPage()%>&b_idx=<%=vo.getB_idx()%>">
 						<%=vo.getSubject() %>
 						<%
 							if(vo.getC_list().size() > 0){
