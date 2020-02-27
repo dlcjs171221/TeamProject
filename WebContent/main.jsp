@@ -91,6 +91,7 @@
 					<c:when test="${requestScope.f_ar != null}">
 					<c:set var="f_ar" value="${requestScope.f_ar }" />
 						<ul class="free">
+						<c:set var="i" value="${pageScope.totalPage }" />
 						<c:forEach var="item" items="${f_ar }"  
 								begin="0" end="2" varStatus="status">
 							<li>
@@ -122,6 +123,7 @@
 				<c:choose>
 					<c:when test="${requestScope.a_ar != null}">
 					<c:set var="a_ar" value="${requestScope.a_ar }" />
+					<c:set var=""></c:set>
 						<ul class="free">
 							<li>
 								<a href="">
