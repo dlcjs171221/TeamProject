@@ -78,17 +78,16 @@
 	</section>
 	
 	<!-- 리스트 -->
-<c:choose>
 	<section class="wrapper align-center" id="three">
 		<div class="inner">
 		
-			<!-- 자유게시판 -->
 			<article>
 				<div class="table-wrapper">
 					<p class="title">자유게시판</p>
 					<span class="more_view">
 						<a href="control?type=free">more</a>
 					</span>
+				<c:choose>
 					<c:when test="${param.f_ar != null}">
 						<ul class="free">
 							<li>
@@ -111,23 +110,24 @@
 							</li>
 						</ul>
 					</c:when>	
-					<!-- 등록된 게시물들이 하나도 없는 경우 -->
+					
 					<c:when test="${param.f_ar == null}"> 
 						<div class="inner">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
 					</c:when>
+				</c:choose>	
 				</div>
 			</article>
 			
-			<!-- 공지사항 -->
+			
 			<article>
 				<div class="table-wrapper">
 					<p class="title">공지사항</p>
 					<span class="more_view">
 						<a href="control?type=ann">more</a>
 					</span>
-					
+				<c:choose>
 					<c:when test="${param.a_ar != null}">
 						<ul class="free">
 							<li>
@@ -150,22 +150,24 @@
 							</li>
 						</ul>
 					</c:when>
-					<!-- 등록된 게시물들이 하나도 없는 경우 -->
+					
 					<c:when test="${param.a_ar == null}"> 
 						<div class="inner">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
 					</c:when>
+				</c:choose>	
 				</div>
 			</article>
 			
-			<!-- 뉴스 -->
+			
 			<article>
 				<div class="table-wrapper">
 					<p class="title">뉴스</p>
 					<span class="more_view">
 						<a href="control?type=news">more</a>
 					</span>
+				<c:choose>	
 					<c:when test="${param.n_ar != null}">
 						<ul class="free">
 							<li>
@@ -188,18 +190,17 @@
 							</li>
 						</ul>
 					</c:when>
-					<!-- 등록된 게시물들이 하나도 없는 경우 -->
+					
 					<c:when test="${param.a_ar == null}">
 						<div class="inner">
 							<p class="null"> 등록된 게시물이 없습니다.</p>
 						</div>
 					</c:when>
+				</c:choose>	
 				</div>
 			</article>
 		</div>
 	</section>
-
-</c:choose>
 
 
 
