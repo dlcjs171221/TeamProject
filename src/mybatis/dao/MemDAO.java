@@ -68,5 +68,19 @@ public class MemDAO {
 			
 			
 		}	
+		// 보기
+				public static MemVO getMember(String m_id) {
+					
+					SqlSession ss = FactoryService.getFactory().openSession();
+
+					MemVO vo = ss.selectOne("mem.get_mem",m_id);
+					
+					ss.close();
+					
+					return vo;
+					
+				}
+			
+		
 		
 }

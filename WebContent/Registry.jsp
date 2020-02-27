@@ -28,50 +28,50 @@
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
 		</ul>
 	</div>
-	<aside id="as"></aside>
 	<h3>회원가입</h3>
 	<div class="contents">
 		<form action="control" method="post">
+		<input type="hidden" name="type" value="mem">
 		<table>
 		<tr>
 			<th><label for="s_id">ID:</label></th>
-			<td><input type="text" id="s_id" name="s_id" placeholder="아이디를 입력하세요"/><div id="box"></div></td>
+			<td><input type="text" id="s_id" name="m_id" placeholder="아이디를 입력하세요"/><div id="box"></div></td>
 			
 		</tr>
 		
 		<tr>
 			<th><label for="s_pw">PW:</label></th>
-			<td><input type="password" id="s_pw" name="s_pw" placeholder="영문/숫자 조합 6~15자"/></td>
+			<td><input type="password" id="s_pw" name="m_pw" placeholder="영문/숫자 조합 6~15자"/></td>
 		</tr>
 		<tr>
 			<th><label for="s_name">Name:</label></th>
-			<td><input type="text" id="s_name" name="s_name" placeholder="아이디를 입력하세요"/></td>
+			<td><input type="text" id="s_name" name="m_name" placeholder="이름을 입력하세요"/></td>
 		</tr>
 		<tr>
 			<th><label for="s_email">Email:</label></th>
 			<td>
-			<input type="text" id="s_email" name="s_email"/>
+			<input type="text" id="s_email" name="m_email"/>
 			<label for="email2">@</label>
-			<input type="text" id="email2" name="s_email"/>
+			<input type="text" id="email2" name="m_email"/>
 			</td>
 		</tr>
 		<tr>
 			<th><label for="s_phone">Phone:</label></th>
 			<td>
-				<select>
+				<select id="s_phone" name="m_phone">
 					<option>::선택하세요::</option>
 					<option value="010">010</option>
 					<option value="011">011</option>
 					<option value="017">017</option>
 				</select>
 				<label for="s_phone2">-</label>
-				<input type="text" id="s_phone2" name="s_phone" size="10"/>
+				<input type="text" id="s_phone2" name="m_phone" size="10"/>
 				<label for="s_phone3">-</label>
-				<input type="text" id="s_phone3" name="s_phone" size="10"/>
+				<input type="text" id="s_phone3" name="m_phone" size="10"/>
 			</td>
 		</tr>     
 		</table><br/><br/><br/>
-		<button type="button" id="registry" onclick="" class="btn btn-info">Registry</button>&nbsp;&nbsp;
+		<button type="submit" id="registry"  class="btn btn-info">Registry</button>&nbsp;&nbsp;
 		<button type="button" id="cancle" onclick="javascript:location.href='control?type='" class="btn btn-success">Cancle</button>
 		</form>
 	</div>
@@ -89,8 +89,72 @@
 				</p>
 			</div>
 		</div>	
-		<aside id="as2"></aside>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			
+			
+			$("#registry").bind("click",function(){
+				var id = $("#s_id").val();
+				var pw = $("#s_pw").val();
+				var name = $("#s_name").val();
+				var email = $("#s_email").val();
+				var phone = $("#s_phone").val();
+				
+				param = "type=mem&m_id="+encodeURIComponent(id)+"&m_pw="+encodeURIComponent(pw)+"&m_name="+encodeURIComponent(name)+"&m_email="+encodeURIComponent(email)+"&m_phone="+encodeURIComponent(phone);
+				
+				if(id.trim().length<1){
+					alert("아이디를 입력하세요~");
+					$("#s_id").focus();
+					return;
+				}
+				if(pw.trim().length<1){
+					alert("비밀번호를 입력하세요~");
+					$("#s_pw").focus();
+					return;
+				}
+				if(name.trim().length<1){
+					alert("이름을 입력하세요~");
+					$("#s_name").focus();
+					return;
+				}
+				$.ajax({
+					url: "control",
+					type: "post",
+					dataType: "json",
+					data:param
+				}).done(function(data){
+					if(data.res == "true"){
+						alert("회원가입완료");
+						location.href="control?type=main";
+					}
+				}).fail(function(err){
+					console.log("err");
+				});
+				
+			});
+			
+			$("#s_id").bind("keyup",function(){
+				var str = $(this).val();
+				
+				if(str.trim().length > 3){
+					
+					$.ajax({	
+						url: "control",
+						type: "POST",
+						data: "type=id&m_id="+encodeURIComponent(str.trim())
+					}).done(function(data){
+						
+						$("#box").html(data);
+					}).fail(function(err){
+						console.log(err);
+					});
+				}else{
+					$("#box").html("");
+				}
+			});
+		});
+			
+	</script>
 </body>
 </html>
