@@ -26,7 +26,7 @@
 			</c:if>
 			<c:if test="${obj != null }">
 				<c:set var="vo" value="${obj }" />
-				<h4>${vo.m_name }님 환영합니다!</h4>
+				<span>${vo.m_name }님 환영합니다!</span>
 				<a href="control?type=logout">sign out</a>
 			</c:if>
 			
