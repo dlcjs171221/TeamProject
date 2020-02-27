@@ -10,15 +10,36 @@ import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.service.FactoryService;
-import mybatis.vo.FreeVO;
 
-public class FreeDAO {
+import mybatis.vo.WbsVO;
+
+public class WbsDAO {
 
 	//전체 게시물의 수를 반환하는 기능
-	public static int getTotalCount() {
+	public static int getFTotalCount() {
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.selectOne("free.totalCount");
+		int cnt = ss.selectOne("wbs.f_totalCount");
+		
+		ss.close();
+		
+		return cnt;
+	}
+	
+	public static int getATotalCount() {
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		int cnt = ss.selectOne("wbs.a_totalCount");
+		
+		ss.close();
+		
+		return cnt;
+	}
+	
+	public static int getNTotalCount() {
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		int cnt = ss.selectOne("wbs.n_totalCount");
 		
 		ss.close();
 		
@@ -27,8 +48,8 @@ public class FreeDAO {
 	
 	//원하는 페이지의 게시물들을 목록화면으로
 	//표현하기 위해 배열로 반환하는 기능
-	public static FreeVO[] getList(int begin, int end) {
-		FreeVO[] ar = null;
+	public static WbsVO[] get_Flist(int begin, int end) {
+		WbsVO[] ar = null;
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
@@ -37,10 +58,54 @@ public class FreeDAO {
 		map.put("begin", begin);
 		map.put("end", end);
 		
-		List<FreeVO> list = ss.selectList("free.freelist", map);
+		List<WbsVO> list = ss.selectList("wbs.wbs_flist", map);
 		
 		if(list != null) {
-			ar = new FreeVO[list.size()];
+			ar = new WbsVO[list.size()];
+			
+			list.toArray(ar);
+			
+			ss.close();
+		}
+		return ar;
+	}
+	
+	public static WbsVO[] get_Alist(int begin, int end) {
+		WbsVO[] ar = null;
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("begin", begin);
+		map.put("end", end);
+		
+		List<WbsVO> list = ss.selectList("wbs.wbs_alist", map);
+		
+		if(list != null) {
+			ar = new WbsVO[list.size()];
+			
+			list.toArray(ar);
+			
+			ss.close();
+		}
+		return ar;
+	}
+	
+	public static WbsVO[] get_Nlist(int begin, int end) {
+		WbsVO[] ar = null;
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("begin", begin);
+		map.put("end", end);
+		
+		List<WbsVO> list = ss.selectList("wbs.wbs_nlist", map);
+		
+		if(list != null) {
+			ar = new WbsVO[list.size()];
 			
 			list.toArray(ar);
 			
@@ -52,11 +117,11 @@ public class FreeDAO {
 	//b_idx값을 인자로 받아서 bbs.getBbs라는 멥퍼를 호출하는 기능
 		//즉, 보기 기능에서 호출되는 함수이며 특정 게시물 정보를
 		//반환해야 한다. - view.jsp
-	public static FreeVO getFree(String f_idx) {
+	public static WbsVO getWbs(String b_idx) {
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		FreeVO vo = ss.selectOne("free.getFree", f_idx);
+		WbsVO vo = ss.selectOne("wbs.getWbs", b_idx);
 		ss.close();
 		
 		return vo;
@@ -64,11 +129,12 @@ public class FreeDAO {
 	}
 	
 	//원글 저장기능
-	public static boolean addFree(String subject, String writer, String content,
+	public static boolean add(String b_name, String subject, String writer, String content,
 			String f_name, String o_name, String ip) {
 		boolean chk = false;
 		
 		Map<String, String> map = new HashMap<String, String>();
+		map.put("b_name", b_name);
 		map.put("subject", subject);
 		map.put("writer", writer);
 		map.put("content", content);
@@ -81,7 +147,7 @@ public class FreeDAO {
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.insert("free.add", map);
+		int cnt = ss.insert("wbs.add", map);
 		
 		if(cnt > 0) {
 			chk = true;
@@ -93,7 +159,7 @@ public class FreeDAO {
 	}
 	
 	public static boolean addAns( String writer, String content, String pwd,
-			String f_idx, String ip) {
+			String b_idx, String ip) {
 		
 		boolean chk = false;
 		
@@ -102,12 +168,12 @@ public class FreeDAO {
 		map.put("writer",writer);
 		map.put("content",content);
 		map.put("pwd",pwd);
-		map.put("f_idx",f_idx);
+		map.put("b_idx",b_idx);
 		map.put("ip",ip);
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.insert("free.add_ans",map);
+		int cnt = ss.insert("wbs.add_ans",map);
 		
 		if(cnt>0) {
 			ss.commit();
@@ -120,13 +186,13 @@ public class FreeDAO {
 	}
 	
 	//원글 수정기능
-	public static boolean edit(String f_idx, String subject, String writer, String content,
+	public static boolean edit(String b_idx, String subject, String writer, String content,
 			String f_name, String o_name, String ip, String pwd) {
 		
 		boolean chk = false;
 		Map<String, String> map = new HashMap<String, String>();
 		
-		map.put("f_idx",f_idx);
+		map.put("b_idx",b_idx);
 		map.put("subject",subject);
 		map.put("writer",writer);
 		map.put("content",content);
@@ -140,7 +206,7 @@ public class FreeDAO {
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.update("free.edit",map);
+		int cnt = ss.update("wbs.edit",map);
 		
 		if(cnt > 0) {
 			ss.commit();
@@ -154,17 +220,17 @@ public class FreeDAO {
 	
 	//인자로 삭제할 원글의 b_idx와 pw를 받아 처리하는 기능 (원글 삭제)
 	
-	public static boolean delFree(String f_idx,String pw) {
+	public static boolean del(String b_idx,String pw) {
 		Boolean chk = false;
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		map.put("f_idx", f_idx);
+		map.put("b_idx", b_idx);
 		map.put("pwd", pw);
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.update("free.del", map);
+		int cnt = ss.update("wbs.del", map);
 		if(cnt>0) {
 			ss.commit();
 			chk = true;
@@ -177,12 +243,12 @@ public class FreeDAO {
 	}
 	
 	
-	//인자로 받은 f_idx의 게시물 hit을 증가하는 기능
-	public static void hit(String f_idx) {
+	//인자로 받은 b_idx의 게시물 hit을 증가하는 기능
+	public static void hit(String b_idx) {
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.update("free.hit",f_idx);
+		int cnt = ss.update("wbs.hit",b_idx);
 		if(cnt > 0) 
 			ss.commit();
 		else 

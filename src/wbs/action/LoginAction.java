@@ -1,4 +1,4 @@
-package bbs.action;
+package wbs.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

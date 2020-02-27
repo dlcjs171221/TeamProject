@@ -1,4 +1,4 @@
-package bbs.control;
+package wbs.control;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bbs.action.Action;
+import wbs.action.Action;
 
 /**
  * Servlet implementation class MyController

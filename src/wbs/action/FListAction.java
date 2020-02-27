@@ -1,15 +1,14 @@
-package bbs.action;
+package wbs.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bbs.util.Paging;
-import mybatis.dao.AnnDAO;
-import mybatis.dao.NewsDAO;
-import mybatis.vo.AnnVO;
-import mybatis.vo.NewsVO;
+import mybatis.dao.WbsDAO;
 
-public class N_ListAction implements Action {
+import mybatis.vo.WbsVO;
+import wbs.util.Paging;
+
+public class FListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -18,7 +17,8 @@ public class N_ListAction implements Action {
 		
 		// 전체 페이지 수를 구하기 위해 먼저
 		// 총 게시물의 수를 구해서 전체페이지 값을 지정한다.
-		page.setTotalRecord(NewsDAO.getTotalCount());
+		page.setTotalRecord(WbsDAO.getFTotalCount());
+		
 		
 		// 위의 총 게시물의 수가 정해지면서 자동적으로
 		// 총 페이지 수가 변경(지정)된다.
@@ -37,15 +37,15 @@ public class N_ListAction implements Action {
 		}
 		
 		//화면에 표현할 게시물들을 검출해 온다.
-		NewsVO[] n_ar = NewsDAO.getList(page.getBegin(), page.getEnd());
+		WbsVO[] f_ar = WbsDAO.get_Flist(page.getBegin(), page.getEnd());
 		
 		//뷰 페이지(flist.jsp)에서 표현할 자원들을
 		//request에 저장한다.
-		request.setAttribute("n_ar", n_ar);
-		request.setAttribute("page", page);
+		request.setAttribute("f_ar", f_ar);
+		request.setAttribute("page", page); 
 		
 		
-		return "/nlist.jsp";
+		return "/wbs_flist.jsp";
 	}
 
 }

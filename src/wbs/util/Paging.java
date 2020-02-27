@@ -1,4 +1,4 @@
-package bbs.util;
+package wbs.util;
 
 public class Paging {
 
