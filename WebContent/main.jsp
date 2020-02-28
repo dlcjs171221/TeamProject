@@ -27,7 +27,7 @@
 	<header id="header">
 		<div class="inner">
 			<a class="logo" href="control">
-				<img alt="logo" src="img/logo.png">
+				BLOG
 			</a>
 			
 			<c:set var="obj"  value="${sessionScope.vo }"/>

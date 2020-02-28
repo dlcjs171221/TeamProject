@@ -11,11 +11,15 @@
 	position: absolute;
 	width: 150px;
 	height: 150px;
-}
-
-.title m{
 	margin: 0;
 	padding: 0;
+}
+
+.title{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: block;
 }
 
 #search_btn{
@@ -28,9 +32,6 @@
 	padding: 0;
 	width: 850px;
 	height: 350px;
-	border: 1px solid red;
-	background-color: #afafaf;
-	color: #fff;
 }
 .pick{
 	width: 250x;
@@ -39,35 +40,31 @@
 	padding: 0;
 	border: 1px solid #6cc091;
 	display: inline-block;
-	background-image: url("../img/free_bl.jpg");
 	background-repeat: no-repeat;
 	background-size: 305px 190px;
 }
 .main_free{
 	display: inline-block;
 	width: 230px;
-	height: 230px;
-	margin: 0;
+	height: 100%;
+	margin: 0 ;
 	padding: 0;
-	border: 1px solid blue;
 	
 }
 .main_ann {
 	display: inline-block;
 	width: 230px;
-	height: 230px;
+	height: 100%;
 	margin: 0;
 	padding: 0;
-	border: 1px solid blue;
 	
 }
 .main_news{
 	display: inline-block;
 	width: 230px;
-	height: 230px;
+	height: 100%;
 	margin: 0;
 	padding: 0;
-	border: 1px solid blue;
 	
 }
 
@@ -85,8 +82,11 @@
 #op{
 	width: 20px;
 }
-
-
+/* 타이틀 */
+strong .title m{
+	margin: 0;
+	padding: 0;
+}
 
 /* Reset */
 	blockquote, q {
@@ -2996,8 +2996,8 @@
 /* Banner */
 
 #banner {
-	padding: 8em 0 9em 0;
-	background-image: url(img/banner.jpg);
+	padding: 5em 0 6em 0;
+	background-image: url(../img/banner.jpg);
 	background-size: cover;
 }
 
