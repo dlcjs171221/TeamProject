@@ -72,7 +72,7 @@
 		</tr>     
 		</table><br/><br/><br/>
 		<button type="button" id="registry"  class="btn btn-info">Registry</button>&nbsp;&nbsp;
-		<button type="button" id="cancle" onclick="javascript:location.href='control?type='" class="btn btn-success">Cancle</button>
+		<button type="button" id="cancle" onclick="javascript:location.href='control?type=main'" class="btn btn-success">Cancle</button>
 		</form>
 	</div>
 	</div>
