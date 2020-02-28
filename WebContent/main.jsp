@@ -29,7 +29,7 @@
 			<c:if test="${obj != null }">
 				<c:set var="vo" value="${obj }" />
 				<span>${vo.m_name }(${vo.m_id })님 환영합니다!</span>
-				<a href="control?type=mem">내정보</a>
+				<a href="control?type=myInfo">내정보</a>
 				<a href="control?type=logout">sign out</a>
 			</c:if>
 			

@@ -2,6 +2,7 @@
 <%@page import="mybatis.vo.MemVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,8 @@
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
 		</ul>
 	</div>
-
+	
+	
 	<h3>회원정보</h3>
 	<table class="f_contents">
 		<tbody>
@@ -48,16 +50,19 @@
 				<td></td>
 			</tr>
 		</tbody>
+		
 		<tfoot>
 			<tr>
 				<td colspan="3">
-					<button type="button" id="edit" class="btn btn-success">수정</button>
+					<button type="button" id="edit" onclick="javascript:location.href='control?type=medit'" class="btn btn-success">수정</button>
 					<button type="button" id="del" class="btn btn-info">삭제</button>
 					<button type="button" id="home" onclick="javascript:location.href='control?type=main'" class="btn btn-success">메인</button>
 				</td>
 			</tr>
 		</tfoot>	
+	
 	</table>
+	
 	<div id="del_win">
 		<form>
 			<label for="password">비밀번호:</label>
@@ -66,7 +71,7 @@
 			<button type="button" id="d_close" name="d_close" class="btn btn-warning">닫기</button><br/><br/>
 		</form>
 	</div>
-
+</div>
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
@@ -100,9 +105,11 @@
 				$("#d_close").bind("click",function(){
 					$("#del_win").dialog("close");
 				});
+				$("#d_btn").bind("click",function(){
+					
+				});
+				
 			});
 		</script>
 </body>
 </html>
-
-	
