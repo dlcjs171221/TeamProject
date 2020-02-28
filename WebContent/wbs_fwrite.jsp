@@ -118,23 +118,30 @@
 						<td><input type="file" id="file" name="file"/> </td>
 					</tr>
 					<tr>
-					<th style="width:83px;">내용:</th>
-					<td><textarea rows="8" cols="50" name="content" id="content"></textarea> </td>
 				</tr>
 				
 				</tbody>
-				<tfoot>
-				<tr></tr>
+			</table>
+			<%--내용의 값을 받기위한 input태그 --%>
+			<input type="hidden" name="content" id="str"/>
+		</form>
+		
+			<table>
+				<tbody>
+				<tr>
+					<th style="width:83px;">내용:</th>
+					<td><textarea rows="8" cols="50" name="content" id="content"></textarea> </td>
+				</tr>
 					<tr>
 					<td colspan="3">
-						<button type="button" id="send" class="btn btn-warning">보내기</button>
+						<button type="button" id="send" class="btn btn-warning"
+						onclick="sendData()">보내기</button>
 						<input type="reset"  id="reset" class="btn btn-info" value="다시"/>
 						<button type="button" id="list" onclick="javascript:location.href='bbslist.jsp'" class="btn btn-primary">목록</button>
 					</td>
 					</tr>
-				</tfoot>
+				</tbody>
 			</table>
-		</form>
 	
 	</div>
 	<div id="footer">
@@ -174,7 +181,71 @@
 		
 		$("#content").summernote("lineHeight", 1.0);
 	});
+	
+	function sendFile(file, editor){
+		//이미지를 서버로 업로드 시키기 위해
+		//비동기식 통신을 수행하자!
+		
+		//파라미터를 전달하기 위해 폼객체 준비
+		var frm = new FormData(); //<form encType="multipart/formData"></form>
+		
+		//보내고자 하는 자원을 파라미터 값으로 등록(추가)
+		frm.append("upload", file);
+		
+		//비동기식 통신
+		$.ajax({
+			url : "control?type=saveImage",
+			type : "post",
+			dataType : "json",
+			//파일을 보낼 때는 일반적인 데이터 전송이 아님을 증명해야 한다.
+			contentType : false,
+			processData : false,
+			data : frm //upload와 str이 담겨져 보내진다.
+		}).done(function(data){
+			
+			$("#content").summernote("editor.insertImage", data.url);
+			
+		}).fail(function(err){
+			console.log(err);
+		});
+	}
+	
+	function sendData(){
+		for(var i=0; i<document.forms[0].elements.length; i++){
+			
+			//만약 제목과 이름만 입력되었는지 유효성 검사를 한다면...
+			if(i > 1)
+				break;
+			
+			if(document.forms[0].elements[i].value == ""){
+				alert(document.forms[0].elements[i].name+"를 입력하세요");
+				document.forms[0].elements[i].focus();
+				return; //수행중단
+			}
+		}
+		
+		//str의 내용의 값을 넣어준다.
+		var str = $("#content").val();
+		
+		//form안에 숨겨놓은 input태그에 내용의 값을 넣어준다.
+		$("#str").val(str);
+		
+		document.forms[0].submit();
+	}
 	</script>
 	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
