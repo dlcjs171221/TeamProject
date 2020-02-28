@@ -99,6 +99,7 @@
 				</p>
 			</div>
 		</div>	
+<<<<<<< HEAD
 		
 		
 		
@@ -111,6 +112,49 @@
 			$("#del").bind("click",function(){
 				$("#del_win").dialog();
 				$("#del_win").dialog("option","width",300);
+=======
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#del").bind("click",function(){
+					$("#del_win").dialog();
+					$("#del_win").dialog("option","width",300);
+				});
+				$("#d_close").bind("click",function(){
+					$("#del_win").dialog("close");
+				});
+				$("#d_btn").bind("click",function(){
+					var id = '${vo.m_id }';
+					var pw = $("#d_pw").val();
+					
+					param = "type=del&m_id="+encodeURIComponent(id)+"&m_pw="+encodeURIComponent(pw);
+					if(pw.trim().length <1){
+						alert("비밀번호를 입력해 주세요~");
+						$("#d_pw").focus();
+						return;
+					}
+					
+					$.ajax({
+						url:"control",
+						type: "post",
+						data: param,
+						dataType: "json"
+					}).done(function(data){
+						if(data.value== "ok"){
+							alert("비밀번호가 다릅니다.");
+						}else{
+							$("#del_win").dialog("close");
+							alert("회원탈퇴완료!");
+							location.href ="control";
+						}
+					}).fail(function(err){
+						
+					});
+					
+				});
+				
+>>>>>>> branch 'master' of https://github.com/dlcjs171221/TeamProject.git
 			});
 			$("#d_close").bind("click",function(){
 				$("#del_win").dialog("close");

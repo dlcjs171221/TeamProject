@@ -2,6 +2,7 @@ package wbs.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import mybatis.dao.MemDAO;
 
@@ -13,11 +14,19 @@ public class DelAction implements Action {
 		String id = request.getParameter("m_id");
 		String pw = request.getParameter("m_pw");
 		
+		System.out.println(id);
+		System.out.println(pw);
+		
 		boolean vo = MemDAO.del(id, pw);
 		
 		if(vo==true) {
 			
+			HttpSession session = request.getSession();
+			
+			session.removeAttribute("vo");
+			
 			request.setAttribute("memdel", vo);
+			
 			return "/memdelok.jsp";
 		}
 		

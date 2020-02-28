@@ -3,9 +3,13 @@
     <%
     	Object obj = request.getParameter("memdel");
     	if(obj!=null){
-    		boolean value = (boolean)obj;
+    		
     %>
-    	{"res":"<%= value %>"}
+    	{"value":"ok"}
+    <%
+    	}else{
+    %>
+    	{"value":"no"}
     <%
     	}
     %>

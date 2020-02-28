@@ -12,13 +12,39 @@
 	float: right;
 }
 
+/* 게시물 하나 미리보기 영역 */
+.info_one{
+	margin: 30px;
+	padding: 0;
+	width: 760px;
+	height: 350px;
+	border: 1px solid red;
+}
+.pick_free{
+	width: 250x;
+	height: 348px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #6cc091;
+	float: left;
+}
+.main_free, .main_ann, .main_news{
+	width: 230px;
+	height: 230px;
+	margin: 10%;
+	padding: 0;
+	border: 1px solid blue;
+	
+}
+.main_free{
+	
+}
+
+
+
 
 
 /* Reset */
-
-	
-
-	
 	blockquote, q {
 		quotes: none;
 	}

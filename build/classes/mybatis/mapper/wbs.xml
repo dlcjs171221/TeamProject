@@ -86,7 +86,7 @@ resultMap="map1">
 	SELECT * FROM(
 			SELECT rownum r_num, a.* FROM(
 				SELECT * FROM wbs_t
-				WHERE status = 0 and b_name = '공지'
+				WHERE status = 0 and b_name = '뉴스'
 				ORDER BY b_idx DESC
 			) a
 		) WHERE r_num BETWEEN 1 AND 3
@@ -97,17 +97,17 @@ resultMap="map1">
 <!-- 전체 게시물 수 -->
 <select id="f_totalCount" resultType="int">
 	select count(*) from wbs_t
-	where status = 0 and b_name = "자유"	
+	where status = 0 and b_name = '자유'	
 </select>
 
 <select id="a_totalCount" resultType="int">
 	select count(*) from wbs_t
-	where status = 0 and b_name = "공지"	 
+	where status = 0 and b_name = '공지'	 
 </select>
 
 <select id="n_totalCount" resultType="int">
 	select count(*) from wbs_t
-	where status = 0 and b_name = "뉴스"
+	where status = 0 and b_name = '뉴스'
 </select>
 
 <!-- 원글 저장하는 기능(추가) -->

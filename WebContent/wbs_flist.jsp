@@ -108,7 +108,7 @@
 <%
 	//게시물들 begin과 end에 맞도록 가져온다.
 	WbsVO[] ar = null;
-	Object ar_obj = request.getAttribute("f_list");
+	Object ar_obj = request.getAttribute("f_ar");
 	
 	if(ar_obj != null) {
 		

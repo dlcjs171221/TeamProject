@@ -61,35 +61,64 @@
 
 	<!-- 첫번째 게시물들 -->
 	<section>
-		<div class="inner">
-			<div class="flex ">
+<%
+	Object f_obj = request.getAttribute("f_ar");
+	Object a_obj = request.getAttribute("a_ar");
+	Object n_obj = request.getAttribute("n_ar");
+	
+	
+%>	
+	
+		<div class="info_one ">
+			<div class="pick">
 				<div class="main_free">
-					<div class="pick_info">
-						<strong class="title">
-							<span class="inner_tit"> 우리 집에 봄이 왔어요,</span> 
-							<span class="inner_tit"> 향기 가득 베란다 정원</span>
-						</strong> 
-						<div class="name_area">
-							<div class="common_icon_box">
-								<!----> <!----> <!----> <!----> <!----> <!---->
-							</div> 
-							<em class="name"> 제라늄이 있는 정원</em>
-						</div>
+					<strong class="title">
+						<span class="inner_tit">  </span> 
+						<span class="inner_tit"> 향기 가득 베란다 정원</span>
+					</strong> 
+					<div class="name_area">
+						<div class="common_icon_box">
+							<i class="fas fa-list-ul fa-2x"></i>
+						</div> 
+						<em class="name"> 제라늄이 있는 정원</em>
 					</div>
-					
-				</div >
+				</div>
+			</div >
 
+			<div class="pick">
 				<div class="main_ann">
-					<p>공지사항의 첫번째 게시물</p>
+					<strong class="title">
+						<span class="inner_tit"> -- </span> 
+						<span class="inner_tit"> 향기 가득 베란다 정원</span>
+					</strong> 
+					<div class="name_area">
+						<div class="common_icon_box">
+							<!----> <!----> <!----> <!----> <!----> <!---->
+						</div> 
+						<em class="name"> 제라늄이 있는 정원</em>
+					</div>
 				</div>
-
-				<div class="main_news">
-					<p>뉴스와 이슈의 첫번째 게시물</p>
-				</div>
-
 			</div>
+
+			<div class="pick">
+				<div class="main_news">
+					<strong class="title">
+					<span class="inner_tit"> -- </span> 
+					<span class="inner_tit"> 향기 가득 베란다 정원</span>
+				</strong> 
+				<div class="name_area">
+					<div class="common_icon_box">
+						<!----> <!----> <!----> <!----> <!----> <!---->
+					</div> 
+					<em class="name"> 제라늄이 있는 정원</em>
+				</div>
+				</div>
+			</div>
+
 		</div>
 	</section>
+	
+	
 	
 	<!-- 리스트 -->
 	<section class="wrapper align-center" id="three">
@@ -103,16 +132,17 @@
 					</span>
 						<ul class="free">
 						<%
-							Object f_obj = request.getAttribute("f_ar");
+							
 							
 						if(f_obj != null) {
 							WbsVO[] f_ar = (WbsVO[]) f_obj;
+						%>	
+					<%
 							int cnt =0;
-							
 							for(WbsVO vo : f_ar){
 					%>
 							<li>
-								<a href="">
+								<a href="control?type=fview">
 									<%=vo.getSubject() %>
 								</a>
 								<span class="date">
@@ -146,10 +176,8 @@
 					<span class="more_view">
 						<a href="control?type=ann">more</a>
 					</span>
-					<ul class="free">
+					<ul class="ann">
 					<%
-						Object a_obj = request.getAttribute("a_ar");
-						
 						if(a_obj != null) {
 							WbsVO[] ar = (WbsVO[]) a_obj;
 							int cnt =0;
@@ -190,7 +218,6 @@
 					</span>
 						<ul class="free">
 					<%
-						Object n_obj = request.getAttribute("n_ar");
 						if(n_obj != null) {
 							WbsVO[] ar = (WbsVO[]) n_obj;
 							int cnt =0;

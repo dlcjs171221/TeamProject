@@ -132,7 +132,7 @@
 						location.href="control?type=login";
 					}
 				}).fail(function(err){
-					console.log("err");
+					alert("회원가입실패");
 				});
 				
 			});
