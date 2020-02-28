@@ -33,11 +33,6 @@
 		<form action="control" method="post">
 		<input type="hidden" name="type" value="mem">
 		<table>
-		
-		<tr>
-			<th><label for="s_pw">PW:</label></th>
-			<td><input type="password" id="s_pw" name="m_pw" /></td>
-		</tr>
 		<tr>
 			<th><label for="s_name">Name:</label></th>
 			<td><input type="text" id="s_name" name="m_name"/></td>
@@ -66,8 +61,8 @@
 			</td>
 		</tr>     
 		</table><br/><br/><br/>
-		<button type="button" id="registry"  class="btn btn-info">수정</button>&nbsp;&nbsp;
-		<button type="button" id="cancle" onclick="javascript:location.href='control?type='" class="btn btn-success">취소</button>
+		<button type="button" id="edit"  class="btn btn-info">수정</button>&nbsp;&nbsp;
+		<button type="button" id="cancle" onclick="javascript:location.href='control?type=myInfo'" class="btn btn-success">취소</button>
 		<button type="button" id="cancle" onclick="javascript:location.href='control?type=main'" class="btn btn-success">홈</button>
 		</form>
 	</div>
@@ -90,9 +85,8 @@
 		$(function(){
 			
 			
-			$("#registry").bind("click",function(){
+			$("#edit").bind("click",function(){
 				var id = $("#s_id").val();
-				var pw = $("#s_pw").val();
 				var name = $("#s_name").val();
 				var email = $("#s_email").val();
 				var email2 = $("#s_email2").val();
@@ -100,18 +94,8 @@
 				var phone2 = $("#s_phone2").val();
 				var phone3 = $("#s_phone3").val();
 				
-				param = "type=mem&m_id="+encodeURIComponent(id)+"&m_pw="+encodeURIComponent(pw)+"&m_name="+encodeURIComponent(name)+"&m_email="+encodeURIComponent(email)+"&m_email="+encodeURIComponent(email2)+"&m_phone="+encodeURIComponent(phone)+"&m_phone="+encodeURIComponent(phone2)+"&m_phone="+encodeURIComponent(phone3);
+				param = "type=meditok&m_name="+encodeURIComponent(name)+"&m_email="+encodeURIComponent(email)+"&m_email="+encodeURIComponent(email2)+"&m_phone="+encodeURIComponent(phone)+"&m_phone="+encodeURIComponent(phone2)+"&m_phone="+encodeURIComponent(phone3);
 				
-				if(id.trim().length<1){
-					alert("아이디를 입력하세요~");
-					$("#s_id").focus();
-					return;
-				}
-				if(pw.trim().length<1){
-					alert("비밀번호를 입력하세요~");
-					$("#s_pw").focus();
-					return;
-				}
 				if(name.trim().length<1){
 					alert("이름을 입력하세요~");
 					$("#s_name").focus();
@@ -124,14 +108,15 @@
 					data:param
 				}).done(function(data){
 					if(data.res == "true"){
-						alert("회원가입완료");
-						location.href="control?type=login";
+						alert("회원수정완료");
+						location.href="control?type=Myinfo";
 					}
 				}).fail(function(err){
 					console.log("err");
 				});
 				
 			});
+		});
 	</script>
 </body>
 </html>
