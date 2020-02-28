@@ -300,19 +300,25 @@ public class WbsDAO {
 	
 	
 	//인자로 받은 b_idx의 게시물 hit을 증가하는 기능
-	public static void hit(String b_idx) {
+	public static boolean hit(String b_idx) {
+		
+		boolean chk = false;
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
 		int cnt = ss.update("wbs.hit",b_idx);
-		if(cnt > 0) 
+		
+		if(cnt > 0) {
+			
+			chk = true;
+			
 			ss.commit();
-		else 
-			ss.rollback();
+		
+		}
 		ss.close();
+	
+		return chk;
 	}
-	
-	
 }
 
 

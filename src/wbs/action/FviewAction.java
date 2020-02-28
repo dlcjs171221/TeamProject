@@ -23,10 +23,6 @@ public class FviewAction implements Action{
 		
 		//2. DAO 로 인자전달
 		WbsVO vo = WbsDAO.getWbs(b_idx);
-	
-		//3.
-		request.setAttribute("vo",vo);
-		
 		
 		HttpSession session = request.getSession();//*****************session 얻기
 		
@@ -57,12 +53,12 @@ public class FviewAction implements Action{
 			
 			if(!chk1){ //chk1 == null
 			
-				WbsDAO.hit(b_idx);
-						
+				boolean chk = WbsDAO.hit(b_idx);
+				list.add(vo);
 			}
+			request.setAttribute("vo", vo);
 			
 		}
-		
 		return "/wbs_fview.jsp";
 		
 	}

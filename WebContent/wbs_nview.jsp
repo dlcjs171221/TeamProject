@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/fontawesome/all.min.css"/>
 <link rel="stylesheet" href="css/jquery-ui.min.css">
 <link type="text/css" rel="stylesheet" href="css/bbs/bbsfooter.css">
+<link rel="stylesheet" href="css/summernote-lite.css">
 <style type="text/css">
 	#menu{
 		width: 600px;
@@ -143,7 +144,7 @@
 					<th>Title:</th>
 					<td><%=vo.getSubject() %></td>
 					<th>date</th>
-					<td><%=vo.getWrite_date() %></td>
+					<td><%=vo.getWrite_date().substring(0,10) %></td>
 				</tr>
 				<tr>
 					<th>writer:</th>
@@ -153,7 +154,7 @@
 				</tr>
 				<tr>
 					<th>내용:</th>
-					<td colspan="3"><textarea rows="8" cols="50"><%=vo.getContent() %></textarea></td>
+					<td colspan="3"><textarea rows="8" cols="50" id="content"><%=vo.getContent() %></textarea></td>
 				</tr>
 			</tbody>
 	<%
@@ -209,6 +210,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/summernote-lite.js"></script>
+	<script src="js/lang/summernote-ko-KR.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$("#del").bind("click", function(){
@@ -231,6 +234,8 @@
 		</div>	
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/summernote-lite.js"></script>
+		<script src="js/lang/summernote-ko-KR.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$("#del").bind("click",function(){
@@ -264,7 +269,7 @@
 
 			$(function() {
 				$("#content").summernote({
-					height: 300, width: 500, lang:"ko-KR", 
+					height: 180, width: 400, lang:"ko-KR", 
 					callbacks:{ 
 						onImageUpload: function(files, editor){
 							//이미지가 에디터에 추가 될때마다 수행하는 곳
