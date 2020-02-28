@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="mybatis.vo.WcommVO"%>
+<%@page import="mybatis.dao.WbsDAO"%>
 <%@page import="mybatis.vo.WbsVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -81,9 +84,17 @@
 	}
 	#comm_ans{
 		margin-left: 250px;
+		border: 1px solid black;
+		width: 600px;
 	}
 	#comm{
 		display: none;
+	}
+	#ans_del{
+		display: none;
+	}
+	#cans{
+		border: 1px solid black;
 	}
 </style>
 </head>
@@ -115,10 +126,9 @@
 		<%
 				String nowPage = request.getParameter("cPage");
 				String b_idx = request.getParameter("b_idx");
-
+				
 				Object obj = request.getAttribute("vo");
-				System.out.println(b_idx);
-				System.out.println(nowPage);
+				
 				if( obj != null){
 			
 					WbsVO vo = (WbsVO)obj;
@@ -141,10 +151,7 @@
 					<td colspan="3"><textarea rows="8" cols="50" id="content"><%=vo.getContent() %></textarea></td>
 				</tr>
 			</tbody>
-	<%
-			}
-				
-	%>
+	
 			<tfoot>
 				<tr>
 					<td colspan="4">
@@ -181,28 +188,57 @@
 			</tbody>
 		</table>
 	</div>
+	
 	<table id="comm_ans">
-		<tbody>
+	<%
+		List<WcommVO> list = vo.getC_list();
+		int c =0;
+		for(WcommVO cvo:list){
+	%>
+		<tbody id="cans">
+			<tr>
+				<td><input type="hidden" id="c_idx" value="<%=cvo.getC_idx()%>"> </td>
+			</tr>
 			<tr>
 					<th><h3> <label>작성자:</label></h3> </th>
-					<td> </td>
+					<td><%= cvo.getWriter() %></td>
 				</tr>
 				<tr>
 					<th><h3><label>내용:</label> </h3></th>
-					<td></td>
+					<td><%= cvo.getContent() %></td>
 				</tr>
 				<tr>
-					<td><button type="button" id="comm_del" name="comm_del" class="btn btn-info">삭제</button></td>
+				<td><button type="button" id="comm_del" name="comm_del" class="btn btn-info">삭제</button></td>
 				</tr>
+		<%
+			c++;
+		}
+		%>
+				
+					
+				
 		</tbody>
 	</table>
 	<hr/><hr/>
+	<%
+		
+		}// if문 끝
+		
+	%>
 	<div id="del_win">
 		<form>
 			<label for="password">비밀번호:</label>
 			<input type="password" id="d_pw" name="d_pw"/><br/><br/>
 			<button type="button" id="d_btn" name="d_btn" class="btn btn-warning">삭제</button>
 			<button type="button" id="d_close" name="d_close" class="btn btn-warning">닫기</button><br/><br/>
+		</form>
+	</div>
+	<div id="ans_del">
+		<form>
+			<label for="password">비밀번호:</label>
+			<input type="password" id="c_pw" name="c_pw"/><br/><br/>
+			<button type="button" id="c_btn" name="c_btn" class="btn btn-warning">삭제</button>
+			<button type="button" id="c_close" name="c_close" class="btn btn-warning">닫기</button><br/><br/>
 		</form>
 	</div>
 	<div id="footer">
@@ -242,7 +278,7 @@
 					var content = $("#add_content").val();
 					var pwd = $("#pwd").val();
 					
-					param = "type=commans&writer="+encodeURIComponent(writer)+"&content="+encodeURIComponent(content)+"&pwd="+encodeURIComponent(pwd);
+					param = "type=commans&writer="+encodeURIComponent(writer)+"&content="+encodeURIComponent(content)+"&pwd="+encodeURIComponent(pwd)+"&b_idx="+<%=b_idx%>+"&cPage="+<%=nowPage%>;
 					
 					if(writer.trim().length<1){
 						alert("작성자를 입력하세요");
@@ -258,14 +294,43 @@
 						dataType:"json",
 						data: param
 					}).done(function(data){
-						if(data.res==true){
+						if(data.res=="true"){
 							alert("작성완료");
-							location.href="control?type=fview";
+							location.href="control?type=fview&cPage="+<%=nowPage%>+"&b_idx="+<%=b_idx%>;
 						}
 					}).fail(function(err){
 						
 					});
 					
+				});
+				$("#comm_del").bind("click",function(){
+					$("#ans_del").dialog();
+					$("#ans_del").dialog("option","width",300);
+					
+				});
+				
+				$("#c_btn").bind("click",function(){
+					var pw = $("#c_pw").val();
+					var c_idx = $("#c_idx").val();
+					var pwd = $("#pwd").val();
+					param = "type=ans&pw="+encodeURIComponent(pw)+"&c_idx="+encodeURIComponent(c_idx);
+					
+					$.ajax({
+						url:"control",
+						type: "post",
+						dataType: "json",
+						data: param
+					}).done(function(data){
+						if(data.res =="true"){
+							alert("삭제완료");
+							location.href="control?type=fview&cPage="+<%=nowPage%>+"&b_idx="+<%=b_idx%>;
+						}
+					}).fail(function(err){
+						
+					});
+				});
+				$("#c_close").bind("click",function(){
+					$("#ans_del").dialog("close");
 				});
 				
 				$("#d_btn").bind("click",function(){

@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 import mybatis.service.FactoryService;
 
 import mybatis.vo.WbsVO;
+import mybatis.vo.WcommVO;
 
 public class WbsDAO {
 
@@ -319,6 +320,37 @@ public class WbsDAO {
 	
 		return chk;
 	}
+	
+	// 댓글 삭제
+			public static boolean commdel(String idx) {
+		 		boolean chk = false;
+		 		
+		 		SqlSession ss = FactoryService.getFactory().openSession();
+		 		
+		 		int cnt = ss.delete("wbs.commdel",idx);
+		 		
+		 		if(cnt>0) {
+		 			chk = true;
+		 			ss.commit();
+		 		}
+		 		ss.close();
+		 		return chk;
+	 	}
+	// 댓글 목록들
+		public static WcommVO[] viewComm(String b_idx) {
+			WcommVO[] ar = null;
+			SqlSession ss = FactoryService.getFactory().openSession();
+			
+			java.util.List<WcommVO> list = ss.selectList("wbs.wcommlist", b_idx);
+			
+			if(list != null) {
+				ar = new WcommVO[list.size()];
+				list.toArray(ar);
+			}
+			
+			return ar;
+		}
+
 }
 
 

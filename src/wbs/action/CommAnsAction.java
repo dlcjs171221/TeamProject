@@ -17,12 +17,6 @@ public class CommAnsAction implements Action {
 		String b_idx = request.getParameter("b_idx");
 		String cPage = request.getParameter("cPage");
 		
-		System.out.println(writer);
-		System.out.println(content);
-		System.out.println(pw);
-		System.out.println(b_idx);
-		System.out.println(cPage);
-		
 		boolean bo = WbsDAO.addAns(writer, content, pw, b_idx, ip);
 		if(bo == true) {
 			request.setAttribute("ans", bo);
