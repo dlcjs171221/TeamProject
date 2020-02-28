@@ -57,7 +57,7 @@
                               <ol class="paging">
                                   
                <%
-               		Object obj = request.getAttribute("page");
+               		Object obj = request.getAttribute("nowPage");
                		Paging pvo = null;
                		if(obj != null){
                			pvo = (Paging)obj;
