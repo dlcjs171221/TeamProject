@@ -1,5 +1,8 @@
+<%@page import="mybatis.vo.MemVO"%>
+<%@page import="mybatis.dao.MemDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,21 +31,29 @@
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
 		</ul>
 	</div>
+	<%
+		MemVO vo = null;
+		String m_id = request.getParameter("m_id");
+		Object obj = MemDAO.getMember(m_id);
+		if(obj!= null){
+			vo = (MemVO)obj;
+	%>
 	<h3>회원수정</h3>
 	<div class="contents">
 		<form action="control" method="post">
 		<input type="hidden" name="type" value="mem">
 		<table>
+		<tbody>
 		<tr>
 			<th><label for="s_name">Name:</label></th>
-			<td><input type="text" id="s_name" name="m_name"/></td>
+			<td><input type="text" id="s_name" name="m_name" value="<%= vo.getM_name()%>"/></td>
 		</tr>
 		<tr>
 			<th><label for="s_email">Email:</label></th>
 			<td>
-			<input type="text" id="s_email" name="m_email"/>
+			<input type="text" id="s_email" name="m_email" />
 			<label for="s_email2">@</label>
-			<input type="text" id="s_email2" name="m_email"/>
+			<input type="text" id="s_email2" name="m_email" />
 			</td>
 		</tr>
 		<tr>
@@ -59,11 +70,17 @@
 				<label for="s_phone3">-</label>
 				<input type="text" id="s_phone3" name="m_phone" size="10"/>
 			</td>
-		</tr>     
+		</tr>    
+		</tbody>
+		<%
+		}
+		%> 
 		</table><br/><br/><br/>
-		<button type="button" id="edit"  class="btn btn-info">수정</button>&nbsp;&nbsp;
-		<button type="button" id="cancle" onclick="javascript:location.href='control?type=myInfo'" class="btn btn-success">취소</button>
-		<button type="button" id="cancle" onclick="javascript:location.href='control?type=main'" class="btn btn-success">홈</button>
+		
+		<c:set var="obj"  value="${sessionScope.vo }"/>
+			<button type="button" id="edit"  class="btn btn-info">수정</button>&nbsp;&nbsp;
+			<a href="control?type=main" class="btn btn-info">홈</a>
+			<a href="control?type=myInfo&m_id=${vo.m_id }" class="btn btn-info">취소</a>
 		</form>
 	</div>
 	</div>
@@ -86,7 +103,7 @@
 			
 			
 			$("#edit").bind("click",function(){
-				var id = $("#s_id").val();
+				var id = '${vo.m_id }';
 				var name = $("#s_name").val();
 				var email = $("#s_email").val();
 				var email2 = $("#s_email2").val();
@@ -94,7 +111,7 @@
 				var phone2 = $("#s_phone2").val();
 				var phone3 = $("#s_phone3").val();
 				
-				param = "type=meditok&m_name="+encodeURIComponent(name)+"&m_email="+encodeURIComponent(email)+"&m_email="+encodeURIComponent(email2)+"&m_phone="+encodeURIComponent(phone)+"&m_phone="+encodeURIComponent(phone2)+"&m_phone="+encodeURIComponent(phone3);
+				param = "type=meditok&m_id="+encodeURIComponent(id)+"&m_name="+encodeURIComponent(name)+"&m_email="+encodeURIComponent(email)+"&m_email="+encodeURIComponent(email2)+"&m_phone="+encodeURIComponent(phone)+"&m_phone="+encodeURIComponent(phone2)+"&m_phone="+encodeURIComponent(phone3);
 				
 				if(name.trim().length<1){
 					alert("이름을 입력하세요~");
@@ -109,7 +126,7 @@
 				}).done(function(data){
 					if(data.res == "true"){
 						alert("회원수정완료");
-						location.href="control?type=Myinfo";
+						location.href="control?type=myInfo&m_id="+id;
 					}
 				}).fail(function(err){
 					console.log("err");

@@ -32,31 +32,41 @@
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
 		</ul>
 	</div>
-	
+	<%
+		MemVO vo = null;
+		String m_id = request.getParameter("m_id");
+		Object obj = MemDAO.getMember(m_id);
+		if(obj!= null){
+			vo = (MemVO)obj;
+	%>
 	
 	<h3>회원정보</h3>
 	<table class="f_contents">
 		<tbody>
 			<tr>
 				<th>아이디:</th>
-				<td></td>
+				<td><%= vo.getM_id() %></td>
 			</tr>
 			<tr>
 				<th>이메일:</th>
-				<td></td>
+				<td><%= vo.getM_email() %></td>
 			</tr>
 			<tr>
 				<th>전화번호:</th>
-				<td></td>
+				<td><%= vo.getM_phone() %></td>
 			</tr>
 		</tbody>
+		<%
+		}
+		%>
 		
 		<tfoot>
 			<tr>
 				<td colspan="3">
-					<button type="button" id="edit" onclick="javascript:location.href='control?type=medit'" class="btn btn-success">수정</button>
-					<button type="button" id="del" class="btn btn-info">삭제</button>
-					<button type="button" id="home" onclick="javascript:location.href='control?type=main'" class="btn btn-success">메인</button>
+				<c:set var="obj"  value="${sessionScope.vo }"/>
+					<a href="control?type=medit&m_id=${vo.m_id }" class="btn btn-info">수정</a>
+					<a href="control?type=main" class="btn btn-info">홈</a>
+					<button type="button" id="del" class="btn btn-info">회원삭제</button>
 				</td>
 			</tr>
 		</tfoot>	

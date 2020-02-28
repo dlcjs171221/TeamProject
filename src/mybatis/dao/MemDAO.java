@@ -82,7 +82,7 @@ public class MemDAO {
 				}
 		
 		//회원 수정
-		public static boolean edit(String m_name, String[] m_email, String[] m_phone) {
+		public static boolean edit(String m_id,String m_name, String[] m_email, String[] m_phone) {
 			boolean chk = false;
 			
 			String s_email = makeString(m_email,"@");
@@ -90,13 +90,14 @@ public class MemDAO {
 			
 			Map<String, String> map = new HashMap<String, String>();
 			
-			map.put("m_name", m_name);
-			map.put("m_email", s_email);
-			map.put("m_phone", s_phone);
+			map.put("id", m_id);
+			map.put("name", m_name);
+			map.put("email", s_email);
+			map.put("phone", s_phone);
 			
 			SqlSession ss = FactoryService.getFactory().openSession();
 			
-			int cnt = ss.selectOne("mem.edit", map);
+			int cnt = ss.update("mem.edit", map);
 			
 			if(cnt > 0) {
 				ss.commit();

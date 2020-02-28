@@ -23,13 +23,13 @@
 	</select>
 	
 	<!--  회원 수정 -->
-	<select id="edit" parameterType="java.util.Map">
+	<update id="edit" parameterType="java.util.Map">
 		update member_t
 		set m_name = #{name},
 			m_email = #{email},
 			m_phone = #{phone}
 		where m_id = #{id}	
-	</select>
+	</update>
 	
 	<!-- 회원 삭제 -->
 	<update id="del" parameterType="java.util.Map">
