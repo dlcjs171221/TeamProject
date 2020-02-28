@@ -89,49 +89,35 @@
 					<span class="more_view">
 						<a href="control?type=free">more</a>
 					</span>
-				<c:choose>
-					<c:when test="${requestScope.f_ar != null}">
 						<ul class="free">
-					 <%
-					Object obj = request.getAttribute("page");
-					Paging pvo = null;
+						<%
+							Object obj = request.getAttribute("f_ar");
 							
-					
-					
-						WbsVO[] ar = null;
-						Object ar_obj = request.getAttribute("ar");
-						
-						if(ar_obj != null) {
-							ar = (WbsVO[]) ar_obj;
+						if(obj != null) {
+							WbsVO[] ar = (WbsVO[]) obj;
+							int cnt =0;
 							
-							for(WbsVO vo : ar) {
-					%>	
+							for(WbsVO vo : ar){
+								
+					%>
 							<li>
-								<a href="control?type=free&b_idx=<%=vo.getB_idx() %>&cPage=<%=pvo.getNowPage() %>">
+								<a href="">
 									<%=vo.getSubject() %>
-									<%
-										if(vo.getC_list().size() > 0){
-									%>		(<%=vo.getC_list().size() %>)
-									<%		
-										}
-									%>
-									
 								</a>
-								<span class="date"><%=vo.getWrite_date() %></span>
+								<span class="date"></span>
 							</li>
-					<%
+
+						<%	
+							++cnt;
 							}
 						}
-					%>	
+						%>
+			
 						</ul>
-					</c:when>	
 					
-					<c:when test="${requestScope.f_ar == null}"> 
 						<div class="inner">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
-					</c:when>
-				</c:choose>	
 				</div>
 			</article>
 			
@@ -172,7 +158,7 @@
 						<a href="control?type=news">more</a>
 					</span>
 						<ul class="free">
-					<%
+					<%-- <%
 						Object obj = request.getAttribute("n_ar");
 						if(obj != null) {
 							WbsVO[] ar = (WbsVO[]) obj;
@@ -195,7 +181,7 @@
 						}	
 					%>	
 						
-						
+ --%>						
 						</ul>
 					 
 					
@@ -214,12 +200,8 @@
 
 
 	<!-- Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/skel.min.js"></script>
-	<script src="js/util.js"></script>
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
-	<script src="js/main.js"></script>
 	<script>
 		$(function (){
 			$("#search_btn").bind("click", function(){
