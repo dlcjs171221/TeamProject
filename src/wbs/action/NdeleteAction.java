@@ -14,28 +14,16 @@ public class NdeleteAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		
-		String c_type = request.getContentType();
-		String viewPath = null;
 		
+		String idx = request.getParameter("b_idx");
+			
+		String pw = request.getParameter("pw");
+			
+		boolean chk = MemDAO.del(idx, pw);
 		
-		if(c_type == null) { // GET방식으로 요청된 경우
-			
-			viewPath = "/control.jsp";
-			
-		}else if(c_type != null && c_type.startsWith("application/")) {
-			// login.jsp에서 POST방식(form)으로 로그인 요청된 경우
-			String idx = (String) request.getAttribute("b_idx");
-			
-			String pw = (String) request.getAttribute("pw");
-			
-			boolean chk = MemDAO.del(idx, pw);
+		request.setAttribute("chk", chk);
 
-			if(!chk) // 회원정보가 있으면
-				WbsDAO.del(idx,pw);
-		
-		}
-		
-		return viewPath;
+		return "/ndel_ok.jsp";
 	}
 
 }

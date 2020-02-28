@@ -155,9 +155,9 @@
 			<tfoot>
 				<tr>
 					<td colspan="4">
-						<button type="button" id="edit" onclick="" class="btn btn-info">EDIT</button>
-						<button type="button" id="del" onclick=""  class="btn btn-warning">Delete</button>
-						<button type="button" id="list" onclick="" class="btn btn-danger">List</button>
+						<button type="button" id="edit" onclick="edit()" class="btn btn-info">EDIT</button>
+						<button type="button" id="del"   class="btn btn-warning">Delete</button>
+						<button type="button" id="list" onclick="goList()" class="btn btn-danger">List</button>
 						<button type="button" id="ans" class="btn btn-danger">댓글</button>
 					</td>
 				</tr>
@@ -225,6 +225,14 @@
 		}// if문 끝
 		
 	%>
+	
+	<form action="control" name="frm" method="post">
+		<input type="hidden" name="type"/>
+		<input type="hidden" name="f_name"/>
+		<input type="hidden" name="b_idx" value="${param.b_idx}"/>
+		<input type="hidden" id="cPage" name="cPage" value="${param.cPage}"/>
+	</form>
+	
 	<div id="del_win">
 		<form>
 			<label for="password">비밀번호:</label>
@@ -265,6 +273,39 @@
 					$("#del_win").dialog();
 					$("#del_win").dialog("option","width",300);
 				});
+				
+				$("#d_btn").bind("click", function(){
+					$("#del_win").dialog("close");
+				});
+				
+				$("#d_btn").bind("click", function(){
+					var b_idx = $("#b_idx").val();
+					var pw = $("#pw").val();
+					var cPage = $("#cPage").val();
+					
+					var param = "type=del&b_idx="+encodeURIComponent(b_idx)+
+						"&pw="+encodeURIComponent(pw);
+					
+					$.ajax({
+						url : "control", //보낼 주소
+						type : "post",  // 파라미터를 보내는 방식
+						data : param, //보내고자 하는 파라미터
+						dataType : "json" //요청하고 받을 데이터타입
+					}).done(function(data){
+						if(data.res == "true"){
+							alert("정말 삭제하시겠습니까?")
+							//에이잭스는 갔다가 돌아 오므로 다시 list로 갈때
+							//cPage값을 주면 된다.
+							location.href="control?type=flist&cPage=${param.cPage}";
+							
+						}else{
+							alert("비밀번호가 다릅니다");
+						}
+					}).fail(function(err){
+						console.log(err);
+					});
+				
+				
 				$("#d_close").bind("click",function(){
 					$("#del_win").dialog("close");
 				});
@@ -354,6 +395,20 @@
 				});
 				
 			});
+			
+			function goList(){
+				document.frm.type.value= "list";
+				document.frm.submit();
+				
+				
+			}
+			
+			function edit() {
+				
+				document.frm.action = "control?type=fedit";
+				document.frm.submit();
+				
+			}
 			
 			$(function() {
 				$("#content").summernote({
