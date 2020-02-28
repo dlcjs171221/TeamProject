@@ -29,7 +29,7 @@
 			<c:if test="${obj != null }">
 				<c:set var="vo" value="${obj }" />
 				<span>${vo.m_name }(${vo.m_id })님 환영합니다!</span>
-				<a href="control?type=myInfo">내정보</a>
+				<a href="control?type=myInfo&m_id=${vo.m_id }">내정보</a>
 				<a href="control?type=logout">sign out</a>
 			</c:if>
 			
@@ -51,7 +51,7 @@
 	</header>
 	
 	<section id="banner">
-		<img alt="배너사진" src="img/banner.jpg">
+		
 	</section>
 	
 	<!-- 메뉴 -->
