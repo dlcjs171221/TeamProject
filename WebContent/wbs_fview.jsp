@@ -74,30 +74,16 @@
 		color: blue;
 		text-decoration: none;
 	}
-	#as{
-		width: 200px;
-		float: left;
-		background: #ccc;
-		height: 900px;
-		margin-top: -150px;
-		line-height: 0;
-	}
-	#as2{
-		width: 200px;
-		float: right;
-		background: #ccc;
-		height: 900px;
-		margin-top: -1010px;
-		line-height: 0;
-	}
-	#comm{
-		width: 600px;
-		margin-left: 250px;
-	}
 	#comm_body{
 		margin-left: 250px;
 		width: 1000px;
 		padding-left: 100px;
+	}
+	#comm_ans{
+		margin-left: 250px;
+	}
+	#comm{
+		display: none;
 	}
 </style>
 </head>
@@ -127,13 +113,12 @@
 		</colgroup>
 			<tbody>
 		<%
-		
-				String nowPage = request.getParameter("nowPage");
+				String nowPage = request.getParameter("cPage");
 				String b_idx = request.getParameter("b_idx");
 
 				Object obj = request.getAttribute("vo");
-				
-				
+				System.out.println(b_idx);
+				System.out.println(nowPage);
 				if( obj != null){
 			
 					WbsVO vo = (WbsVO)obj;
@@ -166,6 +151,7 @@
 						<button type="button" id="edit" onclick="" class="btn btn-info">EDIT</button>
 						<button type="button" id="del" onclick=""  class="btn btn-warning">Delete</button>
 						<button type="button" id="list" onclick="" class="btn btn-danger">List</button>
+						<button type="button" id="ans" class="btn btn-danger">댓글</button>
 					</td>
 				</tr>
 			</tfoot>
@@ -174,20 +160,20 @@
 	</div>
 	<div id="comm">
 		<table>
-		<thead>
-			<tr>
-				<th> <h2>댓글</h2> </th>
-			</tr>
-		</thead>
 		
 			<tbody id="comm_body">
-				<tr>
-					<th><h3> <label for="title">제목:</label></h3> </th>
-					<td><input type="text" id="title" name="title" size="20"/> </td>
-				</tr>
+				
 				<tr>
 					<th><h3><label for="writer">작성자:</label> </h3></th>
 					<td><input type="text" id="writer" name="writer"size="20"> </td>
+				</tr>
+				<tr>
+					<th><h3><label for="content">내용:</label> </h3></th>
+					<td><textarea rows="6" cols="20" id="add_content" name="add_content"></textarea> </td>
+				</tr>
+				<tr>
+					<th><h3><label for="pwd">PW:</label> </h3> </th>
+					<td><input type="password" id="pwd" name="pwd" size="20"> </td>
 				</tr>
 				<tr>
 					<td><button type="button" id="comm_ok" name="comm_ok" class="btn btn-info">작성</button></td>
@@ -195,6 +181,21 @@
 			</tbody>
 		</table>
 	</div>
+	<table id="comm_ans">
+		<tbody>
+			<tr>
+					<th><h3> <label>작성자:</label></h3> </th>
+					<td> </td>
+				</tr>
+				<tr>
+					<th><h3><label>내용:</label> </h3></th>
+					<td></td>
+				</tr>
+				<tr>
+					<td><button type="button" id="comm_del" name="comm_del" class="btn btn-info">삭제</button></td>
+				</tr>
+		</tbody>
+	</table>
 	<hr/><hr/>
 	<div id="del_win">
 		<form>
@@ -204,18 +205,6 @@
 			<button type="button" id="d_close" name="d_close" class="btn btn-warning">닫기</button><br/><br/>
 		</form>
 	</div>
-	<aside id="as2"></aside>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
-	<script src="js/jquery-3.4.1.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			$("#del").bind("click", function(){
-				$("#del_win").dialog();
-			});
-		})
-	</script>
 	<div id="footer">
 			<div class="footer_area">
 				
@@ -229,6 +218,7 @@
 				</p>
 			</div>
 		</div>	
+
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/summernote-lite.js"></script>
@@ -241,6 +231,41 @@
 				});
 				$("#d_close").bind("click",function(){
 					$("#del_win").dialog("close");
+				});
+				
+				$("#ans").bind("click",function(){
+					$("#comm").dialog();
+					$("#comm").dialog("option","width",450);
+				});
+				$("#comm_ok").bind("click",function(){
+					var writer = $("#writer").val();
+					var content = $("#add_content").val();
+					var pwd = $("#pwd").val();
+					
+					param = "type=commans&writer="+encodeURIComponent(writer)+"&content="+encodeURIComponent(content)+"&pwd="+encodeURIComponent(pwd);
+					
+					if(writer.trim().length<1){
+						alert("작성자를 입력하세요");
+						return;
+					}
+					if(content.trim().length<1){
+						alert("내용을입력하세요");
+						return;
+					}
+					$.ajax({
+						url:"control",
+						type: "post",
+						dataType:"json",
+						data: param
+					}).done(function(data){
+						if(data.res==true){
+							alert("작성완료");
+							location.href="control?type=fview";
+						}
+					}).fail(function(err){
+						
+					});
+					
 				});
 				
 				$("#d_btn").bind("click",function(){

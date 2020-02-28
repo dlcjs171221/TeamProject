@@ -134,6 +134,10 @@ resultMap="map1">
 		values(wcomment_t_seq.nextval, #{writer}, #{content}, #{pwd}, sysdate, 
 		#{ip}, #{b_idx})
 	</insert>
+	<!-- 댓글 삭제하는 기능 -->
+	<delete id="commdel" parameterType="String">
+		DELETE FROM wcomment_t WHERE c_idx = #{idx}
+	</delete>
 	
 <!-- 원글 수정 -->
 	<update id="edit" parameterType="java.util.Map">

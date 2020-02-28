@@ -9,6 +9,7 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import mybatis.service.FactoryService;
 import mybatis.vo.MemVO;
+import mybatis.vo.WcommVO;
 
 public class MemDAO {
 	
@@ -148,6 +149,35 @@ public class MemDAO {
 			
 		}
 			
-		
+		// 댓글 삭제
+		public static boolean commdel(String idx) {
+	 		boolean chk = false;
+	 		
+	 		SqlSession ss = FactoryService.getFactory().openSession();
+	 		
+	 		int cnt = ss.delete("wbs.commdel",idx);
+	 		
+	 		if(cnt>0) {
+	 			chk = true;
+	 			ss.commit();
+	 		}
+	 		ss.close();
+	 		return chk;
+	 	}
+	// 댓글 목록들
+		public static WcommVO[] viewComm(String idx) {
+			WcommVO[] ar = null;
+			SqlSession ss = FactoryService.getFactory().openSession();
+			
+			java.util.List<WcommVO> list = ss.selectList("bbs.commList", idx);
+			
+			if(list != null) {
+				ar = new WcommVO[list.size()];
+				list.toArray(ar);
+			}
+			
+			return ar;
+		}
+
 		
 }
