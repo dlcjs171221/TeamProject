@@ -1,3 +1,4 @@
+<%@page import="mybatis.vo.WbsVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -99,6 +100,7 @@
 	}
 </style>
 </head>
+
 <body>
 <div id="header">
 		<h1><a href="control?type=main"><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
@@ -110,6 +112,7 @@
     	<li><a href="product_list.jsp?category=sp003">스포츠</a></li>
     	<li><a href="product_list.jsp?category=sp004">의류</a> </li>
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
+    	<link rel="stylesheet" href="css/summernote-lite.css">
 		</ul>
 	</div>
 	<aside id="as"></aside>
@@ -123,28 +126,45 @@
 			<col width="100px"/>
 		</colgroup>
 			<tbody>
+		<%
+		
+				String nowPage = request.getParameter("nowPage");
+				String b_idx = request.getParameter("b_idx");
+
+				Object obj = request.getAttribute("vo");
+				
+				
+				if( obj != null){
+			
+					WbsVO vo = (WbsVO)obj;
+					
+		%>
 				<tr>
 					<th>Title:</th>
-					<td></td>
+					<td><%=vo.getSubject() %></td>
 					<th>date</th>
-					<td></td>
+					<td><%=vo.getWrite_date() %></td>
 				</tr>
 				<tr>
 					<th>writer:</th>
-					<td></td>
+					<td><%=vo.getWriter() %></td>
 					<th>hit:</th>
-					<td></td>
+					<td><%=vo.getHit() %></td>
 				</tr>
 				<tr>
 					<th>내용:</th>
-					<td colspan="3"><textarea rows="8" cols="50"></textarea> </td>
+					<td colspan="3"><textarea rows="8" cols="50"><%=vo.getContent() %></textarea></td>
 				</tr>
 			</tbody>
+	<%
+			}
+				
+	%>
 			<tfoot>
 				<tr>
 					<td colspan="4">
 						<button type="button" id="edit" onclick="" class="btn btn-info">EDIT</button>
-						<button type="button" id="del" onclick="" class="btn btn-warning">Delete</button>
+						<button type="button" id="del" onclick=""  class="btn btn-warning">Delete</button>
 						<button type="button" id="list" onclick="" class="btn btn-danger">List</button>
 					</td>
 				</tr>
@@ -220,7 +240,85 @@
 				$("#d_close").bind("click",function(){
 					$("#del_win").dialog("close");
 				});
+				
+				$("#d_btn").bind("click",function(){
+					var b_idx = $("#b_idx").val();
+					var pw = $("#d_pw").val();
+					var nowPage = $("#cPage").val();
+					
+					var d_pw = $("#d_pw").val();
+					
+					
+					if(d_pw == pw ){
+						var chk = confirm("삭제하시겠습니까???");
+						
+						if(chk == true){
+						
+							location.href="control?type=ndel&cPage="+cPage+"&b_idx="+b_idx+"&pw="+pw;
+							//type = fdel 로 property추가
+							
+						}
+					}
+				});
 			});
+
+			$(function() {
+				$("#content").summernote({
+					height: 300, width: 500, lang:"ko-KR", 
+					callbacks:{ 
+						onImageUpload: function(files, editor){
+							//이미지가 에디터에 추가 될때마다 수행하는 곳
+							//console.log("ttttttttt");
+							//이미지를 첨부하면 배열로 인식된다.
+							//이것을 서버로 비동기식통신을 수행하는 함수를 호출하여 업로드시킨다.
+							for(var i=0; i<files.length; i++){
+								sendFile(files[i],editor);
+							}
+						} 
+					} 
+				});
+				
+				$("#content").summernote("lineHeight",1.0);
+			});
+			function sendFile(file,editor){
+				//이미지를 서버로 업로드 시키기위해 비동기식 통신을 수행하자
+				
+				//파라미터를 전달하기위해 폼객체 준비.
+				var frm = new FormData(); //<form encType='multipart/form-data'></form>
+				
+				//보내고자하는 자원을 파라미터 값으로 등록(추가)
+				frm.append("upload",file);
+				
+				//비동기식 통신
+				$.ajax({
+					url: "control?type=saveImage",	//요청할 URL
+					type: "post",		//get, post 중 전송방식을 선택한다.
+					dataType: "json",	//서버에서 받을 데이터 형식을 지정한다.	지정하지 않으면 MIME 타입을 참고하여 자동 파싱된다.
+					
+					// 파일을 보낼 때는 일반적인 데이터 전송이 아님을 증명해야 한다.
+					
+					contentType: false, //해더의 Content-Type을 설정한다.
+
+					processData: false, //데이터를 querystring 형태로 보내지 않고 DOMDocument 또는 다른 형태로 보내고 싶으면 false로 설정한다.
+
+					//data: "v1="+encodeURIComponent(값)
+					data: frm //서버로 보낼 데이터
+					
+				}).done(function(data){
+					//console.log(data.img_url);
+					//에디터에 img태그로 저장하기위해 img태그를 만들고 src 속성을 작성해야함
+					//var img = $("<img>").attr("src",data.img_url);
+					
+					//$("#content").summernote("insertNode",img[0]);
+					
+					$("#content").summernote("editor.insertImage",data.url);
+					
+					//console.log(data.str);
+					
+				}).fail(function(err){
+					console.log(err);
+				});
+			}
 		</script>
 </body>
 </html>
