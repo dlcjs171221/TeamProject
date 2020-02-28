@@ -106,7 +106,6 @@
 							
 							for(WbsVO vo : ar) {
 					%>	
-						<li>*^^*</li>
 							<li>
 								<a href="control?type=free&b_idx=<%=vo.getB_idx() %>&cPage=<%=pvo.getNowPage() %>">
 									<%=vo.getSubject() %>
@@ -148,22 +147,11 @@
 						<ul class="free">
 							<li>
 								<a href="">
-									글글글${requestScope["a_ar"] }
+									--
 								</a>
 								<span class="date">2016.04.05</span>
 							</li>
-							<li>
-								<a href="">
-									<c:out value="${vo.m_id }"></c:out>
-								</a>
-								<span class="date">2016.03.30</span>
-							</li>
-							<li>
-								<a href="">
-								게시물3
-								</a>
-								<span class="date">2016.03.29</span>
-							</li>
+							
 						</ul>
 					</c:when>
 					
@@ -183,45 +171,40 @@
 					<span class="more_view">
 						<a href="control?type=news">more</a>
 					</span>
-				<%-- <c:choose>	
-					<c:when test="${requestScope.n_ar != null}">
-					 --%><c:set var="n_ar" value="${requestScope.n_ar }" />
 						<ul class="free">
-						<%
-					Object obj = request.getAttribute("page");
-					Paging pvo = null;
-							
-					
-					
-						WbsVO[] ar = null;
-						Object ar_obj = request.getAttribute("ar");
-						
-						if(ar_obj != null) {
-							ar = (WbsVO[]) ar_obj;
-							
+					<%
+						Object obj = request.getAttribute("n_ar");
+						if(obj != null) {
+							WbsVO[] ar = (WbsVO[]) obj;
+							int cnt =0;
 							for(WbsVO vo : ar) {
-					%>
+								System.out.println(vo.getSubject());
+					%>	
 							<li>
 								<a href="">
 									<%=vo.getSubject() %>
 								</a>
-								<span class="date"><%=vo.getWrite_date() %></span>
+								<span class="date">
+									<%=vo.getWrite_date() %>
+								</span>
 							</li>
-						<%
+
+					<%
+						++cnt;
 							}
-						}
-					%>
+						}	
+					%>	
 						
 						
 						</ul>
-					<%-- </c:when>
+					 
 					
-					<c:when test="${requestScope.a_ar == null}">
+					
 						<div class="inner">
 							<p class="null"> 등록된 게시물이 없습니다.</p>
 						</div>
-					 </c:when>
-				</c:choose>	 --%>
+					
+				
 				</div>
 			</article>
 		</div>
