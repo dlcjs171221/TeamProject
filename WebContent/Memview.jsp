@@ -66,7 +66,7 @@
 				<c:set var="obj"  value="${sessionScope.vo }"/>
 					<a href="control?type=medit&m_id=${vo.m_id }" class="btn btn-info">수정</a>
 					<a href="control?type=main" class="btn btn-info">홈</a>
-					<button type="button" id="del" class="btn btn-info">회원삭제</button>
+					<button type="button" id="del" class="btn btn-info">회원탈퇴</button>
 				</td>
 			</tr>
 		</tfoot>	
@@ -116,7 +116,7 @@
 					$("#del_win").dialog("close");
 				});
 				$("#d_btn").bind("click",function(){
-					
+					var pw = 
 				});
 				
 			});

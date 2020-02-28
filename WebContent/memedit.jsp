@@ -31,6 +31,7 @@
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
 		</ul>
 	</div>
+
 	<%
 		MemVO vo = null;
 		String m_id = request.getParameter("m_id");
@@ -46,29 +47,38 @@
 		<tbody>
 		<tr>
 			<th><label for="s_name">Name:</label></th>
-			<td><input type="text" id="s_name" name="m_name" value="<%= vo.getM_name()%>"/></td>
+			<td><input type="text" id="s_name" name="m_name"  readonly="readonly" value="<%= vo.getM_name()%>"/></td>
 		</tr>
+		<%
+				//@을 기준으로 분리 시킨다.
+				String[] e_ar = vo.getM_email().split("@");
+		%>
+					
 		<tr>
 			<th><label for="s_email">Email:</label></th>
 			<td>
-			<input type="text" id="s_email" name="m_email" />
+			<input type="text" id="s_email" name="m_email" value="<%=e_ar[0]%>"/>
 			<label for="s_email2">@</label>
-			<input type="text" id="s_email2" name="m_email" />
+			<input type="text" id="s_email2" name="m_email" value="<%=e_ar[1]%>"/>
 			</td>
 		</tr>
+		<%
+				//@을 기준으로 분리 시킨다.
+				String[] p_ar = vo.getM_phone().split("-");
+		%>
 		<tr>
 			<th><label for="s_phone">Phone:</label></th>
 			<td>
 				<select id="s_phone" name="m_phone">
 					<option>::선택하세요::</option>
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="017">017</option>
+					<option value="010" <% if(p_ar[0].equals("010")){ %> selected<%}%>>010</option>
+					<option value="011" <% if(p_ar[0].equals("011")){ %> selected<%}%>>011</option>
+					<option value="017"<% if(p_ar[0].equals("017")){ %> selected<%}%>>017</option>
 				</select>
 				<label for="s_phone2">-</label>
-				<input type="text" id="s_phone2" name="m_phone" size="10"/>
+				<input type="text" id="s_phone2" name="m_phone" size="10" value="<%=p_ar[1]%>"/>
 				<label for="s_phone3">-</label>
-				<input type="text" id="s_phone3" name="m_phone" size="10"/>
+				<input type="text" id="s_phone3" name="m_phone" size="10" value="<%=p_ar[2]%>"/>
 			</td>
 		</tr>    
 		</tbody>
