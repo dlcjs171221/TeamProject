@@ -15,6 +15,14 @@
 <link rel="stylesheet" href="css/fontawesome/all.min.css" />
 </head>
 <body>
+<%
+	Object f_obj = request.getAttribute("f_ar");
+	Object a_obj = request.getAttribute("a_ar");
+	Object n_obj = request.getAttribute("n_ar");
+	
+	
+	
+%>	
 
 	<!-- header -->
 	<header id="header">
@@ -33,18 +41,26 @@
 				<a href="control?type=logout">sign out</a>
 			</c:if>
 			
-			
-			
 			<button type="button" id="search_btn" class="button small">Search</button>
 		</div>
 		
 		<div id="dialog">
-			<form action="">
-				<input type="text" id="search_bar" value="" placeholder="검색어를 입력하세요">
-				<button type="button" id="search_btn" class="button small">
-					<i class="fas fa-search"></i> Search
-				</button>
-				
+			<form action="control?type=search" method="post">
+				<fieldset>
+					<legend>검색</legend>
+					<select id="v1" name="searchType">
+						<option>::선택하세요::</option>
+						<option value="0">전체</option>
+						<option value="1">제목</option>
+						<option value="2">글쓴이</option>
+					</select>
+					<input type="text" id="v2" name="searchValue"
+						placeholder="검색어를 입력하세요">
+					
+					<button type="button" id="search_btn" class="button small">
+						<i class="fas fa-search"></i> Search
+					</button>
+				</fieldset>
 			</form>
 		</div>
 					
@@ -61,20 +77,12 @@
 
 	<!-- 첫번째 게시물들 -->
 	<section>
-<%
-	Object f_obj = request.getAttribute("f_ar");
-	Object a_obj = request.getAttribute("a_ar");
-	Object n_obj = request.getAttribute("n_ar");
-	
-	
-%>	
 	
 		<div class="info_one ">
 			<div class="pick">
 				<div class="main_free">
 					<strong class="title">
-						<span class="inner_tit">  </span> 
-						<span class="inner_tit"> 향기 가득 베란다 정원</span>
+						<span class="inner_tit">   </span>
 					</strong> 
 					<div class="name_area">
 						<div class="common_icon_box">
@@ -136,13 +144,13 @@
 							
 						if(f_obj != null) {
 							WbsVO[] f_ar = (WbsVO[]) f_obj;
-						%>	
+						%> 
 					<%
 							int cnt =0;
 							for(WbsVO vo : f_ar){
 					%>
 							<li>
-								<a href="control?type=fview">
+								<a href="control?type=fview&b_idx=<%=vo.getB_idx() %>">
 									<%=vo.getSubject() %>
 								</a>
 								<span class="date">
@@ -185,7 +193,7 @@
 							for(WbsVO vo : ar){
 					%>
 							<li>
-								<a href="">
+								<a href="control?type=aview&b_idx=<%=vo.getB_idx() %>">
 									<%=vo.getSubject() %>
 								</a>
 								<span class="date">
@@ -224,7 +232,7 @@
 							for(WbsVO vo : ar) {
 					%>	
 							<li>
-								<a href="">
+								<a href="control?type=nview&b_idx=<%=vo.getB_idx() %>">
 									<%=vo.getSubject() %>
 								</a>
 								<span class="date">
@@ -270,12 +278,14 @@
 			$("#search_btn").bind("click", function(){
 				$("#dialog").dialog({
 					width: "700",
-					modal: true,
 					margin: "15% auto"
-					
 				});
+				
+				var idx = ("#v1").selectedIndex;
+				if(idx == 0) // "::선택하세요::"를 선택한 경우
+					return;
+				
 			});			
-			
 			
 			
 			

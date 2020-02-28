@@ -26,21 +26,27 @@
 	margin: 0;
 	padding: 0;
 	border: 1px solid #6cc091;
-	float: left;
+	display: inline-block;
 }
-.main_free, .main_ann, .main_news{
+/* .main_free, .main_ann, .main_news{
 	width: 230px;
 	height: 230px;
 	margin: 10%;
 	padding: 0;
 	border: 1px solid blue;
 	
-}
+} */
 .main_free{
 	
 }
 
 
+
+
+/* 검색영역 */
+#op{
+	width: 20px;
+}
 
 
 
