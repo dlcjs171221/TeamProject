@@ -132,10 +132,12 @@
 						data: param,
 						dataType: "json"
 					}).done(function(data){
-						if(data.res==true){
-							location.href ="control?type=main";
-						}else{
+						if(data.value== "ok"){
 							alert("비밀번호가 다릅니다.");
+						}else{
+							$("#del_win").dialog("close");
+							alert("회원탈퇴완료!");
+							location.href ="control";
 						}
 					}).fail(function(err){
 						
