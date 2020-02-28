@@ -116,7 +116,31 @@
 					$("#del_win").dialog("close");
 				});
 				$("#d_btn").bind("click",function(){
-					var pw = 
+					var id = '${vo.m_id }';
+					var pw = $("#d_pw").val();
+					
+					param = "type=del&m_id="+encodeURIComponent(id)+"&m_pw="+encodeURIComponent(pw);
+					if(pw.trim().length <1){
+						alert("비밀번호를 입력해 주세요~");
+						$("#d_pw").focus();
+						return;
+					}
+					
+					$.ajax({
+						url:"control",
+						type: "post",
+						data: param,
+						dataType: "json"
+					}).done(function(data){
+						if(data.res==true){
+							location.href ="control?type=main";
+						}else{
+							alert("비밀번호가 다릅니다.");
+						}
+					}).fail(function(err){
+						
+					});
+					
 				});
 				
 			});
