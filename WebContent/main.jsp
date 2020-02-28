@@ -82,14 +82,13 @@
 			<div class="pick">
 				<div class="main_free">
 					<strong class="title">
-						<span class="inner_tit">   </span>
+						<span class="inner_tit">자유게시판</span>
 					</strong> 
-					<div class="name_area">
-						<div class="common_icon_box">
-							<i class="fas fa-list-ul fa-2x"></i>
-						</div> 
-						<em class="name"> 제라늄이 있는 정원</em>
+					<div class="free_area">
+						
+						<em class="name"> 글을 작성해보세요!</em>
 					</div>
+					<i class="far fa-edit fa-4x"></i>
 				</div>
 			</div >
 
@@ -267,6 +266,14 @@
 		</div>
 	</section>
 
+	<%-- 하단 목록 영역 시작 --%>
+	<div id="footer">
+
+
+
+
+	</div>
+	<%-- 하단 목록 영역 끝 --%>
 
 
 

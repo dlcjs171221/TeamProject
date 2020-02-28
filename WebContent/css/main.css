@@ -14,32 +14,41 @@
 
 /* 게시물 하나 미리보기 영역 */
 .info_one{
-	margin: 30px;
+	margin: auto;
 	padding: 0;
 	width: 760px;
 	height: 350px;
 	border: 1px solid red;
+	background-color: #afafaf;
+	color: #fff;
 }
-.pick_free{
+.pick{
 	width: 250x;
 	height: 348px;
-	margin: 0;
+	margin: auto;
 	padding: 0;
 	border: 1px solid #6cc091;
 	display: inline-block;
+	background-image: url("../img/free_bl.jpg");
+	background-repeat: no-repeat;
+	background-size: 305px 190px;
 }
-/* .main_free, .main_ann, .main_news{
+.main_free, .main_ann, .main_news{
 	width: 230px;
 	height: 230px;
-	margin: 10%;
+	margin: 0;
 	padding: 0;
 	border: 1px solid blue;
 	
-} */
-.main_free{
-	
 }
 
+.fas{
+	position: relative;
+	top: 50;
+}
+.far{
+	color: rgb(75, 75, 93);
+}
 
 
 
