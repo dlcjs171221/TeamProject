@@ -7,7 +7,7 @@ import mybatis.dao.WbsDAO;
 import mybatis.vo.WbsVO;
 import wbs.util.Paging;
 
-public class AListActiion implements Action {
+public class AListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
