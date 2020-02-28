@@ -7,6 +7,16 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
+.logo img{
+	position: absolute;
+	width: 150px;
+	height: 150px;
+}
+
+.title m{
+	margin: 0;
+	padding: 0;
+}
 
 #search_btn{
 	float: right;
@@ -16,7 +26,7 @@
 .info_one{
 	margin: auto;
 	padding: 0;
-	width: 760px;
+	width: 850px;
 	height: 350px;
 	border: 1px solid red;
 	background-color: #afafaf;
@@ -33,7 +43,26 @@
 	background-repeat: no-repeat;
 	background-size: 305px 190px;
 }
-.main_free, .main_ann, .main_news{
+.main_free{
+	display: inline-block;
+	width: 230px;
+	height: 230px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid blue;
+	
+}
+.main_ann {
+	display: inline-block;
+	width: 230px;
+	height: 230px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid blue;
+	
+}
+.main_news{
+	display: inline-block;
 	width: 230px;
 	height: 230px;
 	margin: 0;

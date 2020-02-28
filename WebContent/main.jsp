@@ -3,6 +3,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%!
+	Object f_obj = null;
+	Object a_obj = null;
+	Object n_obj = null;
+	
+	
+	
+%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,19 +23,12 @@
 <link rel="stylesheet" href="css/fontawesome/all.min.css" />
 </head>
 <body>
-<%
-	Object f_obj = request.getAttribute("f_ar");
-	Object a_obj = request.getAttribute("a_ar");
-	Object n_obj = request.getAttribute("n_ar");
-	
-	
-	
-%>	
-
 	<!-- header -->
 	<header id="header">
 		<div class="inner">
-			<a class="logo" href="control"><strong>LOGO</strong></a>
+			<a class="logo" href="control">
+				<img alt="logo" src="img/logo.png">
+			</a>
 			
 			<c:set var="obj"  value="${sessionScope.vo }"/>
 			<c:if test="${obj == null }">
@@ -81,44 +82,80 @@
 		<div class="info_one ">
 			<div class="pick">
 				<div class="main_free">
-					<strong class="title">
-						<span class="inner_tit">자유게시판</span>
+					<%
+						f_obj = request.getAttribute("f_ar");
+						if(f_obj != null) {
+							WbsVO[] vo = (WbsVO[]) f_obj;
+							
+							int i = vo.length-1;
+							WbsVO wbs = vo[i];
+					%>
+					<strong class="title m">
+						<span class="inner_tit"><%=wbs.getSubject() %></span>
 					</strong> 
 					<div class="free_area">
-						
-						<em class="name"> 글을 작성해보세요!</em>
+						<em class="name"> 
+							<%=wbs.getWriter() %>
+						</em>
 					</div>
 					<i class="far fa-edit fa-4x"></i>
+					<%
+						}
+					%>
 				</div>
 			</div >
 
 			<div class="pick">
 				<div class="main_ann">
-					<strong class="title">
-						<span class="inner_tit"> -- </span> 
-						<span class="inner_tit"> 향기 가득 베란다 정원</span>
+				<%
+						a_obj = request.getAttribute("a_ar");
+						if(a_obj != null) {
+							WbsVO[] vo = (WbsVO[]) a_obj;
+							
+							int i = vo.length-1;
+							WbsVO wbs = vo[i];
+				%>
+					<strong class="title m">
+						<span class="inner_tit"><%=wbs.getSubject() %></span> 
 					</strong> 
 					<div class="name_area">
+						<span class="inner_tit"> <%=wbs.getContent() %></span>
 						<div class="common_icon_box">
 							<!----> <!----> <!----> <!----> <!----> <!---->
 						</div> 
-						<em class="name"> 제라늄이 있는 정원</em>
+						<footer>
+							<em class="name"><%=wbs.getWriter() %></em>
+						</footer>
 					</div>
+					<%
+						}
+					%>
 				</div>
 			</div>
 
 			<div class="pick">
 				<div class="main_news">
-					<strong class="title">
-					<span class="inner_tit"> -- </span> 
-					<span class="inner_tit"> 향기 가득 베란다 정원</span>
-				</strong> 
-				<div class="name_area">
-					<div class="common_icon_box">
-						<!----> <!----> <!----> <!----> <!----> <!---->
-					</div> 
-					<em class="name"> 제라늄이 있는 정원</em>
-				</div>
+			<%
+					n_obj = request.getAttribute("n_ar");
+					if(n_obj != null) {
+						WbsVO[] vo = (WbsVO[]) n_obj;
+						
+						int i = vo.length-1;
+						WbsVO wbs = vo[i];
+			%>
+					<strong class="title m">
+						<span class="inner_tit"> <%=wbs.getSubject() %> </span> 
+					</strong> 
+					<div class="name_area">
+						<span class="inner_tit"><%=wbs.getContent() %> </span>
+						<div class="common_icon_box">
+							<!----> <!----> <!----> <!----> <!----> <!---->
+						</div> 
+						<em class="name"> <%=wbs.getWriter() %></em>
+					</div>
+				<%
+						}
+					%>	
 				</div>
 			</div>
 
