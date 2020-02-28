@@ -11,9 +11,8 @@ public class IdAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// 아이디 유무
+		
 		String id = request.getParameter("m_id");
-		
-		
 		
 		MemVO vo = MemDAO.getMember(id);
 		

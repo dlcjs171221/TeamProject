@@ -141,7 +141,6 @@
 				var str = $(this).val();
 				
 				if(str.trim().length > 3){
-					
 					$.ajax({	
 						url: "control",
 						type: "POST",

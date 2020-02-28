@@ -5,10 +5,28 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 import mybatis.service.FactoryService;
 import mybatis.vo.MemVO;
 
 public class MemDAO {
+	
+	public static MemVO[] list() {
+		MemVO[] ar = null;
+		SqlSession ss = FactoryService.getFactory().openSession();
+		java.util.List<MemVO> list = ss.selectList("mem.list");
+		ss.close();
+		
+		if(list != null && !list.isEmpty()) { 
+		
+		ar= new MemVO[list.size()];
+		
+		list.toArray(ar); 
+		}
+		
+		return ar;
+	}
 
 	public static boolean addMem(String m_id, String m_pw, String m_name, String[] m_email,
 			String[] m_phone) {
