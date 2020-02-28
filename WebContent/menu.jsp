@@ -5,9 +5,10 @@
   <div id="menu_header" >
   	<ul id="menu">
 		<li><i class="fab fa-bag"></i> <a href="product_list.jsp?category=com001">컴퓨터</a> </li>       
-    	<li><a href="product_list.jsp?category=ele002">가전 제품</a></li>
-    	<li><a href="product_list.jsp?category=sp003">스포츠</a></li>
-    	<li><a href="product_list.jsp?category=sp004">의류</a> </li>
+    	<li><a href="product_list.jsp?category=ele002">패션의류</a></li>
+    	<li><a href="product_list.jsp?category=sp003">패션잡화</a></li>
+    	<li><a href="product_list.jsp?category=sp004">화장품/미용</a> </li>
+    	<li><a href="product_list.jsp?category=sp004">디지털/가전</a> </li>
     	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
   	</ul>
   </div>

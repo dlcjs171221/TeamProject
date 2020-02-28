@@ -158,10 +158,10 @@
 						<a href="control?type=news">more</a>
 					</span>
 						<ul class="free">
-					<%-- <%
-						Object obj = request.getAttribute("n_ar");
+					<%
+						Object n_obj = request.getAttribute("n_ar");
 						if(obj != null) {
-							WbsVO[] ar = (WbsVO[]) obj;
+							WbsVO[] ar = (WbsVO[]) n_obj;
 							int cnt =0;
 							for(WbsVO vo : ar) {
 								System.out.println(vo.getSubject());
@@ -181,7 +181,7 @@
 						}	
 					%>	
 						
- --%>						
+					
 						</ul>
 					 
 					
