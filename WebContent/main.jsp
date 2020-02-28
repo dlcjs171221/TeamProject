@@ -63,15 +63,27 @@
 	<section>
 		<div class="inner">
 			<div class="flex ">
-				<div class="main_bbs">
-					<p>자유 게시판의 첫번째 게시물</p>
+				<div class="main_free">
+					<div class="pick_info">
+						<strong class="title">
+							<span class="inner_tit"> 우리 집에 봄이 왔어요,</span> 
+							<span class="inner_tit"> 향기 가득 베란다 정원</span>
+						</strong> 
+						<div class="name_area">
+							<div class="common_icon_box">
+								<!----> <!----> <!----> <!----> <!----> <!---->
+							</div> 
+							<em class="name"> 제라늄이 있는 정원</em>
+						</div>
+					</div>
+					
 				</div >
 
-				<div class="main_bbs">
+				<div class="main_ann">
 					<p>공지사항의 첫번째 게시물</p>
 				</div>
 
-				<div class="main_bbs">
+				<div class="main_news">
 					<p>뉴스와 이슈의 첫번째 게시물</p>
 				</div>
 
@@ -91,33 +103,39 @@
 					</span>
 						<ul class="free">
 						<%
-							Object obj = request.getAttribute("f_ar");
+							Object f_obj = request.getAttribute("f_ar");
 							
-						if(obj != null) {
-							WbsVO[] ar = (WbsVO[]) obj;
+						if(f_obj != null) {
+							WbsVO[] f_ar = (WbsVO[]) f_obj;
 							int cnt =0;
 							
-							for(WbsVO vo : ar){
-								
+							for(WbsVO vo : f_ar){
 					%>
 							<li>
 								<a href="">
 									<%=vo.getSubject() %>
 								</a>
-								<span class="date"></span>
+								<span class="date">
+									<%=vo.getWrite_date().substring(0, 10) %>
+								</span>
 							</li>
 
 						<%	
 							++cnt;
-							}
-						}
 						%>
-			
 						</ul>
-					
+					<%
+							}
+						}else{
+					%>
 						<div class="inner">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
+					<%
+						}
+					%>
+			
+					
 				</div>
 			</article>
 			
@@ -128,25 +146,38 @@
 					<span class="more_view">
 						<a href="control?type=ann">more</a>
 					</span>
-				<c:choose>
-					<c:when test="${requestScope.a_ar != null}">
-						<ul class="free">
+					<ul class="free">
+					<%
+						Object a_obj = request.getAttribute("a_ar");
+						
+						if(a_obj != null) {
+							WbsVO[] ar = (WbsVO[]) a_obj;
+							int cnt =0;
+						
+							for(WbsVO vo : ar){
+					%>
 							<li>
 								<a href="">
-									--
+									<%=vo.getSubject() %>
 								</a>
-								<span class="date">2016.04.05</span>
+								<span class="date">
+									<%=vo.getWrite_date().substring(0, 10) %>
+								</span>
 							</li>
-							
+					<%
+						++cnt;
+							}
+					%>		
 						</ul>
-					</c:when>
-					
-					<c:when test="${requestScope.a_ar == null}"> 
+					<%	}else{
+					%>		
 						<div class="inner">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
-					</c:when>
-				</c:choose>	
+							
+					<%		
+						}
+					%>	
 				</div>
 			</article>
 			
@@ -160,35 +191,40 @@
 						<ul class="free">
 					<%
 						Object n_obj = request.getAttribute("n_ar");
-						if(obj != null) {
+						if(n_obj != null) {
 							WbsVO[] ar = (WbsVO[]) n_obj;
 							int cnt =0;
 							for(WbsVO vo : ar) {
-								System.out.println(vo.getSubject());
 					%>	
 							<li>
 								<a href="">
 									<%=vo.getSubject() %>
 								</a>
 								<span class="date">
-									<%=vo.getWrite_date() %>
+									<%=vo.getWrite_date().substring(0, 10) %>
 								</span>
 							</li>
 
 					<%
 						++cnt;
 							}
-						}	
+					%>		
+						
+						</ul>
+					<%	}else{
+					%>		
+						<div class="inner">
+							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
+						</div>
+							
+					<%		
+						}
 					%>	
 						
 					
-						</ul>
 					 
 					
 					
-						<div class="inner">
-							<p class="null"> 등록된 게시물이 없습니다.</p>
-						</div>
 					
 				
 				</div>

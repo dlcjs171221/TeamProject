@@ -23,15 +23,10 @@
 	<div id="header">
 		<h1><a href="control?type=main"><img  src="css/pmlm_n8cyjwtciedn.png"> </a></h1>
 	</div>
-	<div  id="menu">
-		<ul id="m_list" class="form-control">
-		<li><i class="fab fa-bag"></i> <a href="product_list.jsp?category=com001">컴퓨터</a> </li>       
-    	<li><a href="product_list.jsp?category=ele002">가전 제품</a></li>
-    	<li><a href="product_list.jsp?category=sp003">스포츠</a></li>
-    	<li><a href="product_list.jsp?category=sp004">의류</a> </li>
-    	<li> <a href="product_list.jsp?category=sp005">고객지원</a> </li>
-		</ul>
-	</div>
+	<!-- 메뉴 -->
+	<section>
+		<jsp:include page="menu.jsp"/>
+	</section>
 	<%
 		MemVO vo = null;
 		String m_id = request.getParameter("m_id");
@@ -104,22 +99,27 @@
 				</p>
 			</div>
 		</div>	
-		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/jquery-ui.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-				$("#del").bind("click",function(){
-					$("#del_win").dialog();
-					$("#del_win").dialog("option","width",300);
-				});
-				$("#d_close").bind("click",function(){
-					$("#del_win").dialog("close");
-				});
-				$("#d_btn").bind("click",function(){
-					var pw = 
-				});
-				
+		
+		
+		
+		
+		
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#del").bind("click",function(){
+				$("#del_win").dialog();
+				$("#del_win").dialog("option","width",300);
 			});
-		</script>
+			$("#d_close").bind("click",function(){
+				$("#del_win").dialog("close");
+			});
+			$("#d_btn").bind("click",function(){
+				var pw = 
+			});
+			
+		});
+	</script>
 </body>
 </html>
