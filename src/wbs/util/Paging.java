@@ -33,8 +33,10 @@ public class Paging {
 			nowPage = totalPage;
 		
 		//각 페이지 별 게시물을 선별하기 위한 범위(begin, end)를 지정
+		
 		begin = (nowPage-1)*numPerPage+1;
 		end = begin+numPerPage-1;
+		
 		
 		//현재 페이지 값에 의해 블럭의
 		//시작페이지 값을 구한다.
@@ -64,6 +66,9 @@ public class Paging {
 
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
+		
+		//총 게시물에 의해서 총 페이지 수가 결정된다.
+				totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
 	}
 
 	public int getPagePerBlock() {
@@ -81,8 +86,7 @@ public class Paging {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 		
-		//총 게시물에 의해서 총 페이지 수가 결정된다.
-		totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
+		
 	}
 
 	public int getBegin() {

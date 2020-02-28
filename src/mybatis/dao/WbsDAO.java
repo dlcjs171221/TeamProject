@@ -114,6 +114,62 @@ public class WbsDAO {
 		return ar;
 	}
 	
+	//메인화면 top3리스트 보여주는 기능
+	
+	public static WbsVO[] f_top3list() {
+		WbsVO[] ar = null;
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		List<WbsVO> list = ss.selectList("wbs.wbs_top3flist");
+		
+		if(list != null) {
+			ar = new WbsVO[list.size()];
+			
+			list.toArray(ar);
+			
+			ss.close();
+		}
+		
+		return ar;
+	}
+	
+	public static WbsVO[] a_top3list() {
+		WbsVO[] ar = null;
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		List<WbsVO> list = ss.selectList("wbs.wbs_top3alist");
+		
+		if(list != null) {
+			ar = new WbsVO[list.size()];
+			
+			list.toArray(ar);
+			
+			ss.close();
+		}
+		
+		return ar;
+	}
+	
+	public static WbsVO[] n_top3list() {
+		WbsVO[] ar = null;
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		List<WbsVO> list = ss.selectList("wbs.wbs_top3nlist");
+		
+		if(list != null) {
+			ar = new WbsVO[list.size()];
+			
+			list.toArray(ar);
+			
+			ss.close();
+		}
+		
+		return ar;
+	}
+	
 	//b_idx값을 인자로 받아서 bbs.getBbs라는 멥퍼를 호출하는 기능
 		//즉, 보기 기능에서 호출되는 함수이며 특정 게시물 정보를
 		//반환해야 한다. - view.jsp

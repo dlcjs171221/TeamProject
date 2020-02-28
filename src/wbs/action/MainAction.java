@@ -28,9 +28,13 @@ public class MainAction implements Action {
 			
 		}
 		//메인화면에 표시할 게시물들을 검출
-		WbsVO[] f_ar = WbsDAO.get_Flist(page.getBegin(), page.getEnd());
-		WbsVO[] a_ar = WbsDAO.get_Alist(page.getBegin(), page.getEnd());
-		WbsVO[] n_ar = WbsDAO.get_Nlist(page.getBegin(), page.getEnd());
+		//System.out.println(page.getNowPage());
+		//System.out.println(page.getNumPerPage());
+		//System.out.println(page.getBegin());
+		//System.out.println(page.getEnd());
+		WbsVO[] f_ar = WbsDAO.f_top3list();
+		WbsVO[] a_ar = WbsDAO.a_top3list();
+		WbsVO[] n_ar = WbsDAO.n_top3list();
 		
 		//request에 저장
 		request.setAttribute("f_ar", f_ar);

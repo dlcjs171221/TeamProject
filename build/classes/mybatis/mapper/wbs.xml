@@ -58,6 +58,41 @@ resultMap="map1">
 		
 </select>
 
+<!-- main화면에 보여질 top3 게시물 -->
+
+<select id="wbs_top3flist" resultType="mybatis.vo.WbsVO">
+	SELECT * FROM(
+			SELECT rownum r_num, a.* FROM(
+				SELECT * FROM wbs_t
+				WHERE status = 0 and b_name = '자유'
+				ORDER BY b_idx DESC
+			) a
+		) WHERE r_num BETWEEN 1 AND 3
+		
+</select>
+
+<select id="wbs_top3alist" resultType="mybatis.vo.WbsVO">
+	SELECT * FROM(
+			SELECT rownum r_num, a.* FROM(
+				SELECT * FROM wbs_t
+				WHERE status = 0 and b_name = '공지'
+				ORDER BY b_idx DESC
+			) a
+		) WHERE r_num BETWEEN 1 AND 3
+		
+</select>
+
+<select id="wbs_top3nlist" resultType="mybatis.vo.WbsVO">
+	SELECT * FROM(
+			SELECT rownum r_num, a.* FROM(
+				SELECT * FROM wbs_t
+				WHERE status = 0 and b_name = '공지'
+				ORDER BY b_idx DESC
+			) a
+		) WHERE r_num BETWEEN 1 AND 3
+		
+</select>
+
 
 <!-- 전체 게시물 수 -->
 <select id="f_totalCount" resultType="int">
