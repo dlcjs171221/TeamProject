@@ -10,8 +10,10 @@
 </head>
 <body>
 	<!-- header -->
-	<div class="inner">
-		<a class="logo" href="control"><strong>LOGO</strong></a>
+	<div class="logo_area">
+		<a class="logo" href="control">
+			<img alt="로그이미지" src="img/B_logo.png" />
+		</a>
 	</div>
 	
 	<!-- 메뉴 -->

@@ -10,19 +10,35 @@ body{
 	}
 	
 #header {
-			color: #ffffff;
-			display: inline-block;
-			font-weight: 400;
-			height: inherit;
-			left: 0;
-			line-height: inherit;
-			margin: 0;
-			padding: 0;
-			position: absolute;
-			top: 0;
-			font-size: 1em;
-			background: rgba(75, 75, 93, .85);
-		}	
+	color: #ffffff;
+	display: inline-block;
+	font-weight: 400;
+	height: inherit;
+	left: 0;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	font-size: 1em;
+	background: rgba(75, 75, 93, .85);
+}	
+
+div.logo_area{
+	display: block;
+	margin: 0;
+	padding: .2em;
+	width: 1020px;
+	height: 63px;
+	border: 1px solid 
+}	
+.logo img{
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	margin: 0;
+	padding: 0;
+}
 	
 div.contents{
 	border: 1px solid rgb(75, 75, 93);

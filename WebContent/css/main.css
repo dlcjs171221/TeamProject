@@ -7,17 +7,34 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
+#contents{
+	margin: auto;
+	padding: 3em 0;
+	width: 970px;
+	height: 650px;
+	text-align: center;
+	display: block;
+	color: #555555;
+}
+
 .logo img{
 	position: absolute;
-	width: 150px;
-	height: 150px;
+	width: 60px;
+	height: 60px;
 	margin: 0;
 	padding: 0;
 }
 
 .title{
-	margin: 0;
-	padding: 0;
+	background: rgb(75, 75, 93, 0.80);
+	color: #fff;
+	padding: 6px;
+	margin-left: 0;
+	padding: .6em 0 .6em .5em;
+	font-family: inherit;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	width: 100%;
 	display: block;
 }
@@ -29,44 +46,57 @@
 /* 게시물 하나 미리보기 영역 */
 .info_one{
 	margin: auto;
-	padding: 0;
-	width: 850px;
-	height: 350px;
+	padding: 0 auto;
+	width: 100%;
+	height: 300px;
+	display: block;
 }
 .pick{
-	width: 250x;
-	height: 348px;
-	margin: auto;
-	padding: 0;
-	border: 1px solid #6cc091;
-	display: inline-block;
-	background-repeat: no-repeat;
-	background-size: 305px 190px;
+	width: 300px;
+	height: 250px;
+	margin: 0 auto;
+	padding: 0 auto;
+	position: relative;
+	float: left;
 }
-.main_free{
-	display: inline-block;
-	width: 230px;
-	height: 100%;
-	margin: 0 ;
-	padding: 0;
-	
+.main_free, .main_ann, .main_news{
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(75, 75, 93, 0.8);
+    content: '';
+    width: 280px;
+    height: 100%;
+    background-color: rgba(255,255,255, 0.55);
+    color: #9a9a9a;
 }
-.main_ann {
-	display: inline-block;
-	width: 230px;
-	height: 345px;
-	margin: 0;
-	padding: 0;
-	
+.main_free:hover{
+	border: 2px solid #6cc091;
 }
-.main_news{
-	display: inline-block;
-	width: 230px;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	
+.main_ann:hover{
+	border: 2px solid #6cc091;
 }
+.main_news:hover{
+	border: 2px solid #6cc091;
+}
+.con_area{
+	margin: o;
+	padding: 0;
+	width: 100%;
+	height: 50%;
+}
+.sub {
+	font-size: 1.2em;
+}
+.inner_con{
+	font-size: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #555555;
+}
+
 
 .fas{
 	position: relative;
@@ -76,6 +106,59 @@
 	color: rgb(75, 75, 93);
 }
 
+
+/* 리스트 영역 */
+#list{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 300px;
+	display: block;
+}
+.arti{
+	width: 300px;
+	height: 250px;
+	margin: 0 auto;
+	padding: 0 auto;
+	position: relative;
+	float: left;
+}
+.table-wrapper {
+	-webkit-overflow-scrolling: touch;
+	overflow-x: auto;
+	position: absolute;
+	border: 1px solid rgba(75, 75, 93, 0.8);
+	width: 280px;
+	height: 190px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0 auto;
+	padding: 0;
+	content: '';
+}
+
+
+.more_view{
+	margin-right: 8px;
+	padding: 0;
+	float: right;
+	color: #fff;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+
+.date{
+	font-size: 12px;
+	margin: 0;
+	position: absolute;
+	right: 0;
+	text-align: left;
+	text-decoration: none;
+	font-weight: normal;
+	font-style: normal;
+	list-style: none;
+}
 
 
 /* 검색영역 */
@@ -1841,27 +1924,6 @@ strong .title m{
 		}
 
 /* Section/Article */
-.title{
-	background: rgb(75, 75, 93, 0.83);
-	color: #efefef;
-	padding: 5px;
-	margin-left: 0;
-	padding-left: 0;
-}
-.more_view{
-	margin-right: 5px;
-	padding: 0;
-	float: right;
-	color: #dedede;
-	height: 30px;
-	line-height: 30px;
-	font-size: 12px;
-}
-.date{
-	font-size: 12px;
-	margin: 0;
-}
-
 	section.special, article.special {
 		text-align: center;
 	}
@@ -2357,13 +2419,19 @@ strong .title m{
 		}
 
 	ul {
-		list-style: disc;
-		margin: 0 0 2em 0;
-		padding-left: 1em;
+		list-style: none;
+		margin: 0;
 	}
 
 		ul li {
-			padding-left: 0.5em;
+			padding: 0.9em 0;
+			margin: 0;
+			list-style: none;
+			text-align: left;
+			width: 100%;
+			height: 100%;
+			line-height: 100%;
+			
 		}
 
 		ul.alt {
@@ -2522,19 +2590,6 @@ strong .title m{
 		}
 
 /* Table */
-
-	.table-wrapper {
-		-webkit-overflow-scrolling: touch;
-		overflow-x: auto;
-		padding: 0;
-		width: 100%;
-	}
-
-	table {
-		margin: 0 0 2em 0;
-		width: 100%;
-	}
-
 		table tbody tr {
 			border: solid 1px #dbdbdb;
 			border-left: 0;
@@ -2997,9 +3052,14 @@ strong .title m{
 /* Banner */
 
 #banner {
-	padding: 5em 0 6em 0;
-	background-image: url(../img/banner.jpg);
+	padding: 5em 0 4em 0;
+	background-image: url(../img/keyboard.jpg);
 	background-size: cover;
+	background-attachment: scroll;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	text-align: center;
+	position: relative;
 }
 
 .free{
@@ -4671,7 +4731,7 @@ strong .title m{
 	}
 
 	p {
-		margin: 0 0 2em 0;
+		margin: 0 0 .2em 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -4813,6 +4873,10 @@ strong .title m{
 
 	section.wrapper, article.wrapper {
 		padding: 6em 0;
+		margin: 3em auto;
+		width: 100%;
+		height: auto; 
+		
 	}
 
 		section.wrapper header, article.wrapper header {
@@ -5302,13 +5366,9 @@ strong .title m{
 
 	ul {
 		list-style: disc;
-		margin: 0 0 2em 0;
-		padding-left: 1em;
+		margin: 0.35em 0 1em 0;
+		padding-left: .7em;
 	}
-
-		ul li {
-			padding-left: 0.5em;
-		}
 
 		ul.alt {
 			list-style: none;
@@ -5467,20 +5527,9 @@ strong .title m{
 
 /* Table */
 
-.table-wrapper {
-	-webkit-overflow-scrolling: touch;
-	overflow-x: auto;
-	position: relative;
-	width: 250px;
-	overflow: hidden;
-	float: left;
-	margin-left: 50px;
-	border: 1px solid #000;
-}
 	
-
 	table {
-		margin: 0 0 2em 0;
+		margin: 0;
 		width: 100%;
 	}
 
@@ -5947,7 +5996,7 @@ strong .title m{
 
 	#banner {
 		padding: 8em 0 9em 0;
-		background-size: contain;
+		background-size: cover;
 >>>>>>> branch 'master' of https://github.com/dlcjs171221/TeamProject.git
 		background-position: bottom;
 		background-attachment: fixed;

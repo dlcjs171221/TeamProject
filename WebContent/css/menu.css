@@ -5,7 +5,7 @@ body{
 	margin: 0;
 }
 
-a:link{text-decoration:none; color:#555}
+a:link{text-decoration:none; color:#868793}
 a:visited{text-decoration:none; color:#555}
 a:hover{text-decoration:none; color:#6cc091}
 
@@ -19,12 +19,15 @@ ul#menu{
 		text-decoration: none;
 		background-color: rgba(75, 75, 93, 0.85);
 	}
-	ul#menu>li{
-		display: inline-block;
-		width: 150px;
-		margin: 20px auto;
-		
-	}
+ul#menu>li{
+	display: inline-block;
+	width: 150px;
+	margin: auto;
+	
+}
+.li:hover{
+	color: #6cc091;
+}
 ul#menu>li>a{
 	color: #efefef;	
 }

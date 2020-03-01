@@ -7,9 +7,6 @@
 	Object f_obj = null;
 	Object a_obj = null;
 	Object n_obj = null;
-	
-	
-	
 %>	
 <!DOCTYPE html>
 <html>
@@ -17,9 +14,7 @@
 <meta charset="UTF-8">
 <title>Main</title>
 <link rel="stylesheet" href="css/main.css" />
-<link rel="stylesheet" href="css/font-awesome.min.css" />
 <link rel="stylesheet" href="css/jquery-ui.min.css"/>
-<link rel="stylesheet" href="css/sb-admin-2.min.css" />
 <link rel="stylesheet" href="css/fontawesome/all.min.css" />
 </head>
 <body>
@@ -27,7 +22,7 @@
 	<header id="header">
 		<div class="inner">
 			<a class="logo" href="control">
-				BLOG
+				<img alt="로그이미지" src="img/B_logo.png" />
 			</a>
 			
 			<c:set var="obj"  value="${sessionScope.vo }"/>
@@ -77,28 +72,33 @@
 	</section>
 
 	<!-- 첫번째 게시물들 -->
-	<section>
-	
+	<div id="contents">	
 		<div class="info_one ">
 			<div class="pick">
-				<div class="main_free">
-					<%
-						f_obj = request.getAttribute("f_ar");
-						if(f_obj != null) {
-							WbsVO[] vo = (WbsVO[]) f_obj;
-							
-							int i = vo.length-1;
-							WbsVO wbs = vo[i];
-					%>
+				<%
+					f_obj = request.getAttribute("f_ar");
+					if(f_obj != null) {
+						WbsVO[] vo = (WbsVO[]) f_obj;
+						
+						int i = vo.length-1;
+						WbsVO wbs = vo[i];
+				%>
+				<div class="main_free" onclick="control?type=fview&b_idx=<%=wbs.getB_idx() %>">
 					<strong class="title m">
-						<span class="inner_tit"><%=wbs.getSubject() %></span>
+						<span class="sub"><%=wbs.getSubject() %></span>
 					</strong> 
-					<div class="free_area">
+					<div class="con_area">
+						<span class="inner_con"> <%=wbs.getContent() %></span>
+						<br/>
 						<em class="name"> 
 							<%=wbs.getWriter() %>
 						</em>
 					</div>
-					<i class="far fa-edit fa-4x"></i>
+					<div class="common_icon_box">
+						<%--  <i class="far fa-edit fa-4x"></i>--%>
+					</div> 
+					<footer>
+					</footer>
 					<%
 						}
 					%>
@@ -106,7 +106,6 @@
 			</div >
 
 			<div class="pick">
-				<div class="main_ann">
 				<%
 						a_obj = request.getAttribute("a_ar");
 						if(a_obj != null) {
@@ -115,13 +114,14 @@
 							int i = vo.length-1;
 							WbsVO wbs = vo[i];
 				%>
+				<div class="main_ann" onclick="control?type=aview&b_idx=<%=wbs.getB_idx() %>">
 					<strong class="title m">
-						<span class="inner_tit"><%=wbs.getSubject() %></span> 
+						<span class="sub"><%=wbs.getSubject() %></span> 
 					</strong> 
-					<div class="name_area">
-						<span class="inner_tit"> <%=wbs.getContent() %></span>
+					<div class="con_area">
+						<span class="inner_con"> <%=wbs.getContent() %></span>
 						<div class="common_icon_box">
-							<!----> <!----> <!----> <!----> <!----> <!---->
+							
 						</div> 
 						<footer>
 							<em class="name"><%=wbs.getWriter() %></em>
@@ -134,7 +134,6 @@
 			</div>
 
 			<div class="pick">
-				<div class="main_news">
 			<%
 					n_obj = request.getAttribute("n_ar");
 					if(n_obj != null) {
@@ -143,46 +142,45 @@
 						int i = vo.length-1;
 						WbsVO wbs = vo[i];
 			%>
+				<div class="main_news" onclick="control?type=nview&b_idx=<%=wbs.getB_idx() %>">
 					<strong class="title m">
-						<span class="inner_tit"> <%=wbs.getSubject() %> </span> 
+						<span class="sub"> <%=wbs.getSubject() %> </span> 
 					</strong> 
-					<div class="name_area">
-						<span class="inner_tit"><%=wbs.getContent() %> </span>
+					<div class="con_area">
+						<span class="inner_con"><%=wbs.getContent() %> </span>
 						<div class="common_icon_box">
 							<!----> <!----> <!----> <!----> <!----> <!---->
 						</div> 
 						<em class="name"> <%=wbs.getWriter() %></em>
 					</div>
 				<%
-						}
-					%>	
+					} else{
+				%>			
+						<div>
+							게시글이 없습니다
+						</div>				
+				<%	}
+				%>	
 				</div>
 			</div>
 
 		</div>
-	</section>
-	
-	
-	
-	<!-- 리스트 -->
-	<section class="wrapper align-center" id="three">
-		<div class="inner">
 		
-			<article>
+		
+		<!-- 리스트 -->
+		<section class="wrapper align-center" id="list">
+			<article class="arti">
 				<div class="table-wrapper">
 					<p class="title">자유게시판</p>
 					<span class="more_view">
 						<a href="control?type=free">more</a>
 					</span>
-						<ul class="free">
-						<%
-							
-							
+					<ul class="free">
+					<%
 						if(f_obj != null) {
 							WbsVO[] f_ar = (WbsVO[]) f_obj;
-						%> 
-					<%
 							int cnt =0;
+							
 							for(WbsVO vo : f_ar){
 					%>
 							<li>
@@ -193,16 +191,13 @@
 									<%=vo.getWrite_date().substring(0, 10) %>
 								</span>
 							</li>
-
-						<%	
-							++cnt;
-						%>
-						</ul>
-					<%
+						<%	++cnt; 
 							}
-						}else{
+						%>
+					</ul>
+					<%   }else{
 					%>
-						<div class="inner">
+						<div class="inner table">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
 					<%
@@ -214,7 +209,7 @@
 			</article>
 			
 			
-			<article>
+			<article class="arti">
 				<div class="table-wrapper">
 					<p class="title">공지사항</p>
 					<span class="more_view">
@@ -243,18 +238,16 @@
 						</ul>
 					<%	}else{
 					%>		
-						<div class="inner">
+						<div class="inner table">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
-							
 					<%		
 						}
 					%>	
 				</div>
 			</article>
 			
-			
-			<article>
+			<article class="arti">
 				<div class="table-wrapper">
 					<p class="title">뉴스</p>
 					<span class="more_view">
@@ -275,42 +268,26 @@
 									<%=vo.getWrite_date().substring(0, 10) %>
 								</span>
 							</li>
-
 					<%
 						++cnt;
 							}
 					%>		
-						
 						</ul>
 					<%	}else{
 					%>		
-						<div class="inner">
+						<div class="inner table">
 							<p class="nullWbs"> 등록된 게시물이 없습니다.</p>
 						</div>
-							
 					<%		
 						}
 					%>	
-						
-					
-					 
-					
-					
-					
-				
 				</div>
 			</article>
-		</div>
-	</section>
-
-	<%-- 하단 목록 영역 시작 --%>
-	<div id="footer">
-
-
-
-
+		</section>
 	</div>
-	<%-- 하단 목록 영역 끝 --%>
+	
+	
+	
 
 
 
@@ -334,6 +311,8 @@
 			
 			
 		});
+		
+		
 	</script>	
 
 </body>
