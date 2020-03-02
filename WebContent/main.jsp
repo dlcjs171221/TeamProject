@@ -90,15 +90,11 @@
 					</strong> 
 					<div class="con_area">
 						<span class="inner_con"> <%=wbs.getContent() %></span>
-						<br/>
+					</div>
+					<footer>
 						<em class="name"> 
 							<%=wbs.getWriter() %>
 						</em>
-					</div>
-					<div class="common_icon_box">
-						<%--  <i class="far fa-edit fa-4x"></i>--%>
-					</div> 
-					<footer>
 					</footer>
 					<%
 						}
@@ -121,13 +117,10 @@
 					</strong> 
 					<div class="con_area">
 						<span class="inner_con"> <%=wbs.getContent() %></span>
-						<div class="common_icon_box">
-							
-						</div> 
+					</div>
 						<footer>
 							<em class="name"><%=wbs.getWriter() %></em>
 						</footer>
-					</div>
 					<%
 						}
 					%>
@@ -149,11 +142,10 @@
 					</strong> 
 					<div class="con_area">
 						<span class="inner_con"><%=wbs.getContent() %> </span>
-						<div class="common_icon_box">
-							<!----> <!----> <!----> <!----> <!----> <!---->
-						</div> 
-						<em class="name"> <%=wbs.getWriter() %></em>
 					</div>
+					<footer>
+						<em class="name"> <%=wbs.getWriter() %></em>
+					</footer>	
 				<%
 					} else{
 				%>			
