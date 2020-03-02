@@ -27,7 +27,7 @@ public class FeditAction implements Action {
 				if(vo != null)
 					request.setAttribute("vo", vo);
 				
-				viewPath = "/edit.jsp";
+				viewPath = "/wbs_fedit.jsp";
 			}else if(c_type.startsWith("multipart/")) {
 				// 첨부파일을 저장할 위치를 절대경로화 시킨다.
 				ServletContext application = request.getServletContext();

@@ -155,14 +155,14 @@
 				<tbody>
 				<tr>
 					<th style="width:83px;">내용:</th>
-					<td><textarea rows="8" cols="50" name="content" id="content"></textarea> </td>
+					<td><textarea rows="8" cols="50" name="content" id="content" ><%=vo.getContent()%></textarea></td>
 				</tr>
 					<tr>
 					<td colspan="3">
 						<button type="button" id="send" class="btn btn-warning"
 						onclick="saveData()">저장</button>
 						<input type="reset"  id="reset" class="btn btn-info" value="다시"/>
-						<button type="button" id="list" onclick="javascript:location.href='control?type=fview'" class="btn btn-primary">목록</button>
+						<button type="button" id="list" onclick="javascript:document.location.href='control?type=flist'" class="btn btn-primary">목록</button>
 					</td>
 					</tr>
 				</tbody>
