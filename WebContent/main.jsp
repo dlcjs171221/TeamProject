@@ -84,7 +84,7 @@
 						int i = vo.length-1;
 						WbsVO wbs = vo[i];
 				%>
-				<div class="main_free" onclick="control?type=fview&b_idx=<%=wbs.getB_idx() %>">
+				<div class="main_free" onclick="javascript: document.location.href='control?type=fview&b_idx=<%=wbs.getB_idx() %>'">
 					<strong class="title m">
 						<span class="sub"><%=wbs.getSubject() %></span>
 					</strong> 
@@ -115,7 +115,7 @@
 							int i = vo.length-1;
 							WbsVO wbs = vo[i];
 				%>
-				<div class="main_ann" onclick="control?type=aview&b_idx=<%=wbs.getB_idx() %>">
+				<div class="main_ann" onclick="javascript: document.location.href='control?type=aview&b_idx=<%=wbs.getB_idx() %>'">
 					<strong class="title m">
 						<span class="sub"><%=wbs.getSubject() %></span> 
 					</strong> 
@@ -143,7 +143,7 @@
 						int i = vo.length-1;
 						WbsVO wbs = vo[i];
 			%>
-				<div class="main_news" onclick="control?type=nview&b_idx=<%=wbs.getB_idx() %>">
+				<div class="main_news" onclick="javascript: document.location.href='control?type=nview&b_idx=<%=wbs.getB_idx() %>'">
 					<strong class="title m">
 						<span class="sub"> <%=wbs.getSubject() %> </span> 
 					</strong> 
