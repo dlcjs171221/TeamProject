@@ -43,16 +43,17 @@
 		<div id="dialog">
 			<form action="control?type=search" method="post">
 				<fieldset>
-					<legend>검색</legend>
+				
 					<select id="v1" name="searchType">
 						<option>::선택하세요::</option>
 						<option value="0">전체</option>
 						<option value="1">제목</option>
 						<option value="2">글쓴이</option>
 					</select>
+					<br/>
 					<input type="text" id="v2" name="searchValue"
 						placeholder="검색어를 입력하세요">
-					
+					<br/>
 					<button type="button" id="search_btn" class="button small">
 						<i class="fas fa-search"></i> Search
 					</button>
@@ -299,7 +300,8 @@
 			$("#search_btn").bind("click", function(){
 				$("#dialog").dialog({
 					width: "700",
-					margin: "15% auto"
+					margin: "15% auto",
+					title: "검색"
 				});
 				
 				var idx = ("#v1").selectedIndex;

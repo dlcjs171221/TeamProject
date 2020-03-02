@@ -4202,7 +4202,7 @@ strong .title m{
 	@media screen and (max-width: 736px) {
 
 		.row > * {
-			padding: 0 0 0 1.25em;
+			padding: 0 ;
 		}
 
 		.row {

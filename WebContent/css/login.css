@@ -28,9 +28,9 @@ div.logo_area{
 	display: block;
 	margin: 0;
 	padding: .2em;
-	width: 1020px;
+	width: 100%;
 	height: 63px;
-	border: 1px solid 
+	background-color: rgba(75, 75, 93, 0.85); 	
 }	
 .logo img{
 	position: absolute;
@@ -64,7 +64,8 @@ div.contents{
 	float: left;
 	width: 300px;
 	margin: 0;
-	padding: 10px;
+	padding: 5px;
+	margin: 0;
 }
 
 /* 기업회원 */
@@ -76,4 +77,37 @@ div.contents{
 }
 #login_per, #login_gro{
 	width: 20%
+}
+
+.login-box-table1 caption{
+	text-indent: -9999px; 
+}
+
+.login_t{
+	width: 550px;
+	height: 200px;
+}
+
+#id.input-id{
+	width: 100%;
+	height: 44px;
+	margin: 10px;
+}
+#pw{
+	width: 100%;
+	height: 44px;
+	margin: 10px;
+}
+
+.btn btn-f btn-point login-top{
+	margin: 0;
+	padding: 0;
+}
+#login_btn{
+	margin-left: 1.35em;
+	padding: 0 .55em;
+}
+#reg_btn{
+	margin-left: .35em;
+	padding: 0 .55em;
 }
