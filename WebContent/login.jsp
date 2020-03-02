@@ -12,7 +12,7 @@
 	<!-- header -->
 	<div class="logo_area">
 		<a class="logo" href="control">
-			<img alt="로그이미지" src="img/B_logo.png" />
+			<img src="css/pmlm_n8cyjwtciedn.png">
 		</a>
 	</div>
 	

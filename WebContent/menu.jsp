@@ -4,10 +4,10 @@
   
   <div id="menu_header" >
   	<ul id="menu">
-		<li class="li"><a href="#">이달의 블로그</a> </li>       
-    	<li class="li"><a href="#">공식블로그</a></li>
-    	<li class="li"><a href="#">파워블로그</a></li>
-    	<li class="li"><a href="#">챌린지프로그램</a> </li>
+		<li class="li"><a href="#">컴퓨터</a> </li>       
+    	<li class="li"><a href="#">가전 제품</a></li>
+    	<li class="li"><a href="#">스포츠</a></li>
+    	<li class="li"><a href="#">의류</a> </li>
     	<li class="li"> <a href="#">고객지원</a> </li>
   	</ul>
   </div>
